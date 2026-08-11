@@ -225,7 +225,7 @@
     .worry__title {
         /* 他セクションの見出し（支援・流れ等）に近いサイズ。「お悩み、」で改行して2行にする */
         font-size: 24px;
-        left: 12px;
+        left: 0px;
     }
 
     /* 表示切り替え自体は1100px側で行っている。SPではさらにサイズだけ詰める */
@@ -303,14 +303,14 @@
 
     .worry__group--woman .worry__figure {
         bottom: 6.4%;
-        left: 21vw;
+        left: 20vw;
         width: 8.7vw;
         transform: none;
     }
 
     .worry__group--man .worry__figure {
         bottom: 7.1%;
-        left: 74vw;
+        left: 80vw;
         /* 男性のSVGは余白を含むぶん、カンプの見た目(35×124)に合わせて大きめに */
         width: 10vw;
         transform: none;
@@ -338,5 +338,8 @@
        文字が小さいので2pxでは太すぎるため1pxに落とす */
     .worry__line {
         border-bottom-width: 1px;
+        /* .worry__item の line-height:2 を引き継ぐと下線が離れて見えるため、
+           このinline-blockだけ行の高さを詰めてテキストに添わせる */
+        line-height: 1.3;
     }
 }

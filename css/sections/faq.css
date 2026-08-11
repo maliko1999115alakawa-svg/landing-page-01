@@ -135,11 +135,11 @@
         font-size: 12px;
     }
 
-    /* SPはあしらいを横幅いっぱいに表示、top/leftで位置調整 */
+    /* SPはあしらいを横幅いっぱいに表示 */
     .faq__back {
         width: 100%;
-        height: 60%;
-        top: 16.8%;
+        height: 65%;
+        top: 13%;
         left: 0;
         transform: translateY(-50%);
         object-fit: unset;

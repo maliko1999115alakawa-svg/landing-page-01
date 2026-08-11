@@ -191,7 +191,7 @@
 
     /* 文章の下に置き、帯の下へはみ出させる（カンプ実測 325px幅・右寄せ） */
     .cta__illust {
-        top: 54.4%;
+        top: 60%;
         right: 0;
         bottom: auto;
         left: auto;

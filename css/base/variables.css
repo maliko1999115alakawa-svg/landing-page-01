@@ -39,10 +39,12 @@
     --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
 
     /* --- 書体 ------------------------------------------------------------ */
-    /* 和文: Zen Kaku Gothic New / 数字: Inter（デザイン上の Google Sans Flex の代替） */
-    --font-base: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic",
-        "Meiryo", sans-serif;
-    --font-number: "Inter", var(--font-base);
+    /* カンプ指定の Google Sans Flex を先頭に置く。この書体は和文を持たないので、
+       数字・欧文だけが Google Sans Flex になり、和文は自動で次の書体に落ちる。
+       これで HTML 側に印を付けなくても、すべての数字が同じ書体で揃う */
+    --font-base: "Google Sans Flex", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN",
+        "Yu Gothic", "Meiryo", sans-serif;
+    --font-number: "Google Sans Flex", var(--font-base);
 
     --weight-regular: 400;
     --weight-medium: 500;

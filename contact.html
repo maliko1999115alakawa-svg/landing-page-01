@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 限定公開のため検索エンジンには載せない -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>お問い合わせフォーム（準備中）｜キャリアトレーナーズ</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- 本体と同じ簡易パスワードゲート -->
+    <link rel="stylesheet" href="css/components/gate.css">
+    <script src="js/gate.js"></script>
+
+    <link rel="stylesheet" href="css/base/reset.css">
+    <link rel="stylesheet" href="css/base/variables.css">
+    <link rel="stylesheet" href="css/base/base.css">
+    <link rel="stylesheet" href="css/components/button.css">
+
+    <style>
+        /* このページ専用。1画面で完結するので外部CSSは作らない */
+        .stub {
+            display: grid;
+            place-items: center;
+            min-height: 100svh;
+            padding: 40px var(--container-gutter);
+            background-color: var(--color-bg);
+        }
+
+        .stub__card {
+            width: 100%;
+            max-width: 520px;
+            padding: 40px 32px;
+            border: 2px solid var(--color-orange);
+            border-radius: 16px;
+            background-color: var(--color-white);
+            text-align: center;
+        }
+
+        .stub__label {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 999px;
+            background-color: var(--color-yellow);
+            font-size: 12px;
+            font-weight: var(--weight-bold);
+        }
+
+        .stub__title {
+            margin-top: 18px;
+            font-size: 22px;
+            font-weight: var(--weight-bold);
+            letter-spacing: 0.04em;
+        }
+
+        .stub__text {
+            margin-top: 16px;
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .stub__note {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.15);
+            font-size: 12px;
+            line-height: 1.8;
+            color: var(--color-text-muted);
+            text-align: left;
+        }
+
+        .stub__actions {
+            margin-top: 28px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="stub">
+        <div class="stub__card">
+            <p class="stub__label">準備中</p>
+
+            <h1 class="stub__title">お問い合わせフォーム</h1>
+
+            <p class="stub__text">
+                現在フォームを準備しています。<br>
+                公開までもうしばらくお待ちください。
+            </p>
+
+            <p class="stub__note">
+                ※ 仮遷移先<br>
+                Googleフォームのアドレスが決まったら、
+                <code>index.html</code> 内の
+                <code>href="contact.html"</code> を
+                そのフォームのURLに置き換える（3か所）。
+            </p>
+
+            <p class="stub__actions">
+                <a class="button button--pill" href="index.html">トップへ戻る</a>
+            </p>
+        </div>
+    </main>
+</body>
+
+</html>

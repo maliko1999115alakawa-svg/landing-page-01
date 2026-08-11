@@ -68,6 +68,26 @@
     gap: 12px;
 }
 
+/* --------------------------------------------------------------------------
+   タブレット（768〜1100px）
+   PCの下余白(233px)はカンプの版面に合わせた値で、この幅では下half分が
+   ただの空白になってしまうため、内容量に見合う余白に詰める
+   -------------------------------------------------------------------------- */
+@media (max-width: 1100px) and (min-width: 768px) {
+    .footer {
+        padding: 56px 0 72px;
+    }
+
+    .footer__inner {
+        gap: 32px;
+    }
+
+    /* 2つのボタンの幅を揃えて右端で縦に並べる */
+    .footer__actions .button {
+        min-width: 200px;
+    }
+}
+
 @media (max-width: 767px) {
     .footer {
         padding: 44px 0 56px;
@@ -85,5 +105,22 @@
 
     .footer__actions .button {
         width: 100%;
+    }
+}
+
+/* 指で押す領域は見た目より広く取る。アイコン自体の大きさは変えず、
+   まわりの余白でタップ領域を44pxまで広げている */
+@media (max-width: 1100px) {
+    .footer__social {
+        gap: 4px;
+        margin-top: 10px;
+        /* 余白のぶん左へずれるので、文字の左端に合わせて戻す */
+        margin-left: -11px;
+    }
+
+    .footer__social-link {
+        width: 44px;
+        height: 44px;
+        padding: 11px;
     }
 }
