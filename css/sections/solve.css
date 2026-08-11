@@ -70,7 +70,8 @@
 
 @media (max-width: 767px) {
     .solve {
-        padding: 48px 16px 56px;
+        /* 電球（top:18px, 高さ約46px）とテキストの間に隙間ができるよう上パディングを広げる */
+        padding: 78px 16px 56px;
         /* スマホでも少し重なるよう小さめの負のマージン */
         margin-bottom: -20px;
     }

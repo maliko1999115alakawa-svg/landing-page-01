@@ -117,6 +117,22 @@
 }
 
 @media (max-width: 1100px) {
+    /* この幅ではコンテナが画面幅いっぱいに近くなり、矢印の負のオフセットが
+       画面外に飛び出して切れてしまう。矢印ぶんの余白をviewport側に確保し、
+       矢印はカルーセルの内側（0位置）に収める */
+    .trainer__viewport {
+        margin-inline: 46px;
+    }
+
+    .trainer__arrow--prev {
+        left: 0;
+    }
+
+    .trainer__arrow--next {
+        right: 0;
+    }
+
+    /* viewportが狭くなった分だけ、カードの横幅も自動的に詰まる */
     .trainer__item {
         flex: 0 0 calc((100% - 35px) / 2);
     }

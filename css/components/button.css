@@ -102,6 +102,24 @@
     stroke-width: 1.4;
 }
 
+/* タブレット幅（iPad等）。PC用の固定値のままだと大きすぎるため、
+   cta.css側のタイトル縮小と同じ1100pxで button--hero も縮小する */
+@media (max-width: 1100px) {
+    .button--hero {
+        gap: 18px;
+        min-width: 300px;
+        padding: 18px 26px;
+        border-radius: 20px;
+        box-shadow: 0 3px 1px #ac3800, 0.07em 0.09em 0.05em rgba(0, 0, 0, 0.28);
+        font-size: 24px;
+    }
+
+    .button--hero .button__icon {
+        width: 36px;
+        height: 36px;
+    }
+}
+
 @media (max-width: 767px) {
     .button--pill {
         min-width: 0;

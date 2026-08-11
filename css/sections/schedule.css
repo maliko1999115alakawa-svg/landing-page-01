@@ -246,7 +246,8 @@
     }
 
     .schedule__detail-line {
-        align-items: flex-start;
+        /* 実技面接試験の4行（リンク×2・日付×2）をカードの右端に揃える */
+        align-items: flex-end;
         gap: 5px;
     }
 

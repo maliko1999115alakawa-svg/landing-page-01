@@ -19,15 +19,24 @@
 }
 
 .worry__title {
+    /* fit-contentにして、直下に置く「全体用」波線の幅をタイトルの実際の
+       文字幅にぴったり合わせられるようにする */
+    position: relative;
+    z-index: 0;
+    width: fit-content;
+    margin-inline: auto;
     font-size: 46px;
     font-weight: var(--weight-bold);
     letter-spacing: 0.08em;
     text-align: center;
 }
 
-/* 「こんなお悩み、」の下に波線をあしらう */
+/* 行ごと（SP用）の波線を置くための基準 */
 .worry__title-highlight {
     position: relative;
+    /* z-index:-1 の波線がこの要素の外側まで沈んでしまわないよう、
+       ここでスタッキングコンテキストを作る */
+    z-index: 0;
     display: inline-block;
 }
 
@@ -35,12 +44,23 @@
     position: absolute;
     z-index: -1;
     left: 50%;
-    bottom: -10px;
-    width: calc(100% + 28px);
     height: auto;
     max-width: none;
     transform: translateX(-50%);
     pointer-events: none;
+}
+
+/* PC: 改行しないので、タイトル全体の下に1本だけ通す */
+.worry__title-deco--full {
+    bottom: -14px;
+    width: calc(100% + 20px);
+}
+
+/* SP: 「お悩み、」で改行して2行になるため、行ごとに1本（PCでは非表示） */
+.worry__title-deco--part {
+    display: none;
+    bottom: -10px;
+    width: calc(100% + 28px);
 }
 
 /* 中央のイラストは重ね置きにして、文章だけを2列×2行で組む */
@@ -153,7 +173,10 @@
 
     .worry__blob {
         width: 96%;
-        height: 120%;
+        /* .worry__body の高さ（テキストの行数依存で小さい）に対する%だと
+           containで画像が過度に縮小されるため、素材本来の比率で高さを決める */
+        height: auto;
+        aspect-ratio: 1184 / 786;
     }
 
     .worry__group--woman .worry__figure {
@@ -185,11 +208,16 @@
     .worry__title {
         /* 他セクションの見出し（支援・流れ等）に近いサイズ。「お悩み、」で改行して2行にする */
         font-size: 24px;
-        position: relative;
         left: 12px;
     }
 
-    .worry__title-deco {
+    /* SPは2行になるので、全体用は隠して行ごとの波線を表示する */
+    .worry__title-deco--full {
+        display: none;
+    }
+
+    .worry__title-deco--part {
+        display: block;
         bottom: -4px;
         width: calc(100% + 14px);
     }

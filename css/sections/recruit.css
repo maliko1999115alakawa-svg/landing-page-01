@@ -74,6 +74,9 @@
 
     .recruit__action {
         width: 100%;
+        /* ボタン自体は幅100%にしないため、右端に寄せる */
+        text-align: right;
+        margin-top: 8px;
     }
 }
 
