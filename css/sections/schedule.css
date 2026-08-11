@@ -166,8 +166,11 @@
         justify-items: center;
     }
 
+    /* 学科試験（両団体共通＋日付）・実技面接試験（リンク×2＋日付×2）とも
+       カードの右端に揃える */
     .schedule__detail {
-        align-items: center;
+        align-items: flex-end;
+        justify-self: end;
     }
 }
 
@@ -249,6 +252,17 @@
         /* 実技面接試験の4行（リンク×2・日付×2）をカードの右端に揃える */
         align-items: flex-end;
         gap: 5px;
+    }
+
+    /* 学科試験の「両団体共通」タグは試験名と同じ行にあるので、
+       margin-leftを自動にして行の右端へ押し出す */
+    .schedule__detail > .schedule__tag {
+        margin-left: auto;
+    }
+
+    /* 日付は単独で1行分の幅を持つので、テキストを右揃えにする */
+    .schedule__date {
+        text-align: right;
     }
 
     .schedule__row + .schedule__row {

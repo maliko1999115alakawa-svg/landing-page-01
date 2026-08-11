@@ -106,6 +106,33 @@
     transform: translateY(-9px) rotate(-45deg);
 }
 
+/* --------------------------------------------------------------------------
+   タブレット（768〜1100px）
+   1列のまま収めたいので、ロゴ・リンク・CTAを一段小さくして間隔を詰める
+   -------------------------------------------------------------------------- */
+@media (max-width: 1100px) and (min-width: 768px) {
+    .header__logo {
+        font-size: 18px;
+        margin-right: 24px;
+    }
+
+    .header__list {
+        gap: 18px;
+    }
+
+    .header__link {
+        font-size: 14px;
+        letter-spacing: 0.02em;
+    }
+
+    .header__cta {
+        min-width: 0;
+        margin-left: 20px;
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+}
+
 @media (max-width: 767px) {
     .header__inner {
         padding-inline: 16px;

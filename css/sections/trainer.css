@@ -23,6 +23,8 @@
 .trainer__list {
     display: flex;
     gap: 35px;
+    /* 横スワイプはJSで拾い、縦スクロールはブラウザに任せる */
+    touch-action: pan-y;
     transition: transform 0.4s ease;
 }
 

@@ -198,6 +198,17 @@
     .hero__title-strong {
         font-size: max(30px, 5.42vw);
     }
+
+    /* バッジのテキストがPCと同じ計算式のままだと縮みすぎるので、
+       下限を付けてひと回り大きくする */
+    .hero__badge-label,
+    .hero__badge-unit {
+        font-size: max(13px, 1.4vw);
+    }
+
+    .hero__badge-value {
+        font-size: max(22px, 2.4vw);
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -308,14 +319,14 @@
 
     .hero__badge-label,
     .hero__badge-unit {
-        font-size: 2vw;
+        font-size: 2.3vw;
         letter-spacing: 0;
         white-space: nowrap;
     }
 
     .hero__badge-value {
         margin-top: 0.2vw;
-        font-size: 2.9vw;
+        font-size: 3.3vw;
         letter-spacing: 0;
     }
 }

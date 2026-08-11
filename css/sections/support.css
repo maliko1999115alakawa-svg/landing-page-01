@@ -169,6 +169,23 @@
 
     .support__banner {
         margin-right: 220px;
+        /* max-widthいっぱいに広がると、2行に折り返した後のテキストに対して
+           吹き出しが余りすぎるため、実際のテキスト幅に合わせて縮める */
+        width: fit-content;
+        max-width: 100%;
+    }
+
+    /* nowrap＋固定20pxのままだと、狭くなったバナー幅からテキストがはみ出すため、
+       SPと同様に2行へ折り返し、文字サイズも幅に応じて縮める */
+    .support__banner-text {
+        padding: 16px 60px 16px 40px;
+        font-size: clamp(13px, 1.7vw, 18px);
+        line-height: 1.6;
+        white-space: normal;
+    }
+
+    .support__banner-text .support__lead-line {
+        display: block;
     }
 }
 

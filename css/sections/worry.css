@@ -158,13 +158,30 @@
 
 @media (max-width: 1100px) {
     .worry {
+        padding-top: 90px;
         padding-bottom: 240px;
+    }
+
+    /* iPad幅でも1行に収まらず任意の位置で折れてしまうため、
+       「こんなお悩み、」の直後で改行し、SPと同じ行ごとの波線に切り替える */
+    .worry__title .u-sp-only {
+        display: inline;
+    }
+
+    .worry__title-deco--full {
+        display: none;
+    }
+
+    .worry__title-deco--part {
+        display: block;
+        bottom: -8px;
+        width: calc(100% + 20px);
     }
 
     .worry__body {
         column-gap: 250px;
         row-gap: 80px;
-        margin-top: 200px;
+        margin-top: 210px;
     }
 
     .worry__item {
@@ -211,13 +228,8 @@
         left: 12px;
     }
 
-    /* SPは2行になるので、全体用は隠して行ごとの波線を表示する */
-    .worry__title-deco--full {
-        display: none;
-    }
-
+    /* 表示切り替え自体は1100px側で行っている。SPではさらにサイズだけ詰める */
     .worry__title-deco--part {
-        display: block;
         bottom: -4px;
         width: calc(100% + 14px);
     }
