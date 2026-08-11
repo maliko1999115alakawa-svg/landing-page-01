@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   「そのお悩み、○○が解決します！」の帯
+   看板を模した緑の帯。左右に留めビス、下辺中央から次のセクションへ▼が伸びる。
+   ========================================================================== */
+
+.solve {
+    --notch-color: var(--color-teal-light);
+
+    position: relative;
+    /* supportの黄色バックより手前に出ないよう z-index を 1 に下げる */
+    z-index: 1;
+    padding: 140px 0 140px;
+    /* 下を伸ばした分、supportが上に被さるよう負のマージンをセット */
+    margin-bottom: -60px;
+    background-color: var(--color-teal-light);
+    /* 上左・上右だけ角丸、下左・下右はシャープ */
+    border-radius: var(--section-radius) var(--section-radius) 0 0;
+}
+
+/* solve の ::after 三角は support に隠れるため非表示。
+   代わりに support の ::before (has-notch-top) で前面に描く */
+.solve.has-notch::after {
+    display: none;
+}
+
+/* 帯の上辺にかかる電球 */
+.solve__bulb {
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    width: 48px;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.solve__text {
+    color: var(--color-white);
+    font-size: 26px;
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.1em;
+    text-align: center;
+}
+
+/* ブランド名だけ字間を広げて目立たせる */
+.solve__brand {
+    font-size: 30px;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.18em;
+}
+
+/* 看板の留めビス */
+.solve__rivet {
+    position: absolute;
+    top: 24px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.solve__rivet--left {
+    left: 24px;
+}
+
+.solve__rivet--right {
+    right: 24px;
+}
+
+@media (max-width: 767px) {
+    .solve {
+        padding: 48px 16px 56px;
+        /* スマホでも少し重なるよう小さめの負のマージン */
+        margin-bottom: -20px;
+    }
+
+    .solve__bulb {
+        width: 32px;
+        top: 18px;
+    }
+
+    .solve__text {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    .solve__brand {
+        font-size: 14px;
+        letter-spacing: 0.06em;
+    }
+
+    .solve__rivet {
+        width: 8px;
+        height: 8px;
+    }
+
+    .solve__rivet--left {
+        left: 18px;
+    }
+
+    .solve__rivet--right {
+        right: 18px;
+    }
+}

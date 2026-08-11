@@ -1,0 +1,302 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   こんなお悩み、ございませんか？
+
+   PCとSPで組み方が大きく変わるセクション。
+     PC … 大きな紙テクスチャのブロブを1枚敷き、中央に2人を並べて左右にお悩みを配置
+     SP … 「女性＋お悩み2件」「お悩み2件＋男性」の2つのかたまりを上下に置き、
+           かたまりごとに小さなブロブを敷く
+
+   どちらにも対応できるよう、HTMLは人物ごとのグループでくくってある。
+   PCではグループを display:contents で透過させ、中の文章をそのまま
+   .worry__body のグリッドに並べている。
+   ========================================================================== */
+
+.worry {
+    padding: 132px 0 400px;
+    background-color: var(--color-bg);
+}
+
+.worry__title {
+    font-size: 46px;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.08em;
+    text-align: center;
+}
+
+/* 「こんなお悩み、」の下に波線をあしらう */
+.worry__title-highlight {
+    position: relative;
+    display: inline-block;
+}
+
+.worry__title-deco {
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    bottom: -10px;
+    width: calc(100% + 28px);
+    height: auto;
+    max-width: none;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+/* 中央のイラストは重ね置きにして、文章だけを2列×2行で組む */
+.worry__body {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 360px;
+    row-gap: 120px;
+    margin-top: 280px;
+}
+
+/* PCではグループの箱を消し、中の文章を直接グリッドに載せる */
+.worry__group {
+    display: contents;
+}
+
+/* 背景の紙テクスチャのブロブ。装飾なので読み上げ対象にしない */
+.worry__blob {
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    left: 54%;
+    width: 1184px;
+    height: 786px;
+    transform: translate(-50%, -50%);
+    background-image: url("../../images/worry/worry-blob.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+}
+
+/* --- 人物イラスト --------------------------------------------------------
+   カンプでは2人が1つのかたまり(244×460)として中央に置かれる。
+   SPで別々の位置に飛ばせるよう画像は2枚に分け、PCでは中央からのずれで
+   カンプの並びを再現している */
+.worry__figure {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    height: auto;
+}
+
+.worry__group--woman .worry__figure {
+    width: 130px;
+    transform: translate(calc(-50% - 56px), calc(-50% + 10px));
+}
+
+.worry__group--man .worry__figure {
+    width: 136px;
+    transform: translate(calc(-50% + 55px), calc(-50% - 3px));
+}
+
+.worry__item {
+    position: relative;
+    z-index: 1;
+    font-size: 28px;
+    font-weight: var(--weight-bold);
+    line-height: 1.6;
+    letter-spacing: 0.1em;
+}
+
+/* 各行の下に手書き風の下線を引く */
+.worry__line {
+    display: inline-block;
+    border-bottom: 2px solid var(--color-text);
+    white-space: nowrap;
+}
+
+/* グループ内の1件目が上段、2件目が下段 */
+.worry__group .worry__item:nth-of-type(1) {
+    grid-row: 1;
+}
+
+.worry__group .worry__item:nth-of-type(2) {
+    grid-row: 2;
+}
+
+.worry__item--right {
+    grid-column: 2;
+    text-align: left;
+    margin-left: 40px;
+}
+
+.worry__item--left {
+    grid-column: 1;
+    text-align: right;
+}
+
+.worry__item--left .worry__line {
+    text-align: left;
+}
+
+@media (max-width: 1100px) {
+    .worry {
+        padding-bottom: 240px;
+    }
+
+    .worry__body {
+        column-gap: 250px;
+        row-gap: 80px;
+        margin-top: 200px;
+    }
+
+    .worry__item {
+        font-size: 19px;
+    }
+
+    .worry__blob {
+        width: 96%;
+        height: 120%;
+    }
+
+    .worry__group--woman .worry__figure {
+        width: 100px;
+        transform: translate(calc(-50% - 43px), calc(-50% + 8px));
+    }
+
+    .worry__group--man .worry__figure {
+        width: 104px;
+        transform: translate(calc(-50% + 42px), calc(-50% - 2px));
+    }
+}
+
+/* --------------------------------------------------------------------------
+   スマートフォン（カンプ iPhone17-1 / 402px 基準）
+
+   PCの2列組みをやめ、次の2つのかたまりを上下に積む。
+     1段目 … 左に女性、右のブロブの上にお悩み2件
+     2段目 … 左のブロブの上にお悩み2件、右に男性
+   カンプの座標をそのまま％で使いたいので、.worry__body だけ左右の余白を
+   打ち消して画面幅いっぱいに広げ、文字も vw で一緒に伸縮させている。
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+    .worry {
+        /* カンプ実測: 見出しまで64px / 下は91px */
+        padding: 56px 0 64px;
+    }
+
+    .worry__title {
+        /* 他セクションの見出し（支援・流れ等）に近いサイズ。「お悩み、」で改行して2行にする */
+        font-size: 24px;
+        position: relative;
+        left: 12px;
+    }
+
+    .worry__title-deco {
+        bottom: -4px;
+        width: calc(100% + 14px);
+    }
+
+    .worry__body {
+        display: flex;
+        flex-direction: column;
+        /* かたまり同士の間はカンプ実測23px */
+        gap: 6.4vw;
+        /* 見出しの下からブロブまで35px */
+        margin-top: 6.7vw;
+        margin-inline: calc(var(--container-gutter) * -1);
+    }
+
+    /* PCの大きなブロブはSPでは使わない */
+    .worry__blob {
+        display: none;
+    }
+
+    /* かたまりごとに小さなブロブを敷く。カンプ実測 220×141 */
+    .worry__group {
+        display: block;
+        position: relative;
+        /* かたまりの高さがブロブ(141px)と揃うだけの上下余白 */
+        padding-block: 4.5vw;
+    }
+
+    .worry__group::before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        /* 文字を大きくしたので固定比率をやめ、かたまりの高さいっぱいに伸ばして
+           文章全体を包むようにする。幅はグループごとに指定 */
+        top: 0;
+        bottom: 0;
+        background-image: url("../../images/worry/worry-blob.svg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        pointer-events: none;
+    }
+
+    /* 1段目はブロブが右寄り、2段目は左寄り */
+    .worry__group--woman::before {
+        left: 32vw;
+        width: 65vw;
+    }
+
+    .worry__group--man::before {
+        left: 8vw;
+        width: 65vw;
+    }
+
+    /* 文章の左端（カンプ実測 x=182 / x=97） */
+    .worry__group--woman {
+        padding-left: 43vw;
+        padding-right: 4vw;
+    }
+
+    .worry__group--man {
+        padding-left: 16vw;
+        padding-right: 26vw;
+    }
+
+    /* 人物は各かたまりの外側の端に、下ぞろえで置く */
+    .worry__figure {
+        top: auto;
+        left: auto;
+        width: 8.7vw;
+        transform: none;
+    }
+
+    .worry__group--woman .worry__figure {
+        bottom: 6.4%;
+        left: 21vw;
+        width: 8.7vw;
+        transform: none;
+    }
+
+    .worry__group--man .worry__figure {
+        bottom: 7.1%;
+        left: 74vw;
+        /* 男性のSVGは余白を含むぶん、カンプの見た目(35×124)に合わせて大きめに */
+        width: 10vw;
+        transform: none;
+    }
+
+    /* 行送りは font-size の2倍 */
+    .worry__item,
+    .worry__item--left,
+    .worry__item--right {
+        grid-row: auto;
+        margin-left: 0;
+        font-size: 3.6vw;
+        font-weight: var(--weight-medium);
+        line-height: 2;
+        letter-spacing: 0.02em;
+        text-align: left;
+    }
+
+    /* お悩み1件目と2件目の間（カンプ実測で1行ぶん余分にあく） */
+    .worry__item + .worry__item {
+        margin-top: 5vw;
+    }
+
+    /* カンプのSPには下線が無いが、PCと表現をそろえるため引いている。
+       文字が小さいので2pxでは太すぎるため1pxに落とす */
+    .worry__line {
+        border-bottom-width: 1px;
+    }
+}

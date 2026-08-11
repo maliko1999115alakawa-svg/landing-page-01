@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   コンテナ
+   PCデザインのコンテンツ幅1160pxを中央寄せする、全セクション共通の器。
+   ========================================================================== */
+
+/* 左右の余白ぶんを足しておき、PCでは中身がちょうど1160pxになるようにする */
+.container {
+    width: 100%;
+    max-width: calc(var(--container-width) + var(--container-gutter) * 2);
+    margin-inline: auto;
+    padding-inline: var(--container-gutter);
+}
+
+/* FAQなど、本文幅をやや狭く取るセクション用 */
+.container--narrow {
+    max-width: calc(1020px + var(--container-gutter) * 2);
+}
+
+/* ==========================================================================
+   セクション境界の装飾
+   背景帯の角丸と、下辺中央から次のセクションへ突き出す▼をまとめて扱う。
+   ========================================================================== */
+
+/* 背景帯の上辺を角丸にする */
+.is-rounded-top {
+    border-top-left-radius: var(--section-radius);
+    border-top-right-radius: var(--section-radius);
+}
+
+/* 下辺中央の▼。色は各セクションで --notch-color に指定する */
+.has-notch {
+    position: relative;
+    /* 次のセクションの背景に塗りつぶされないよう、重なり順を上げる */
+    z-index: 1;
+}
+
+.has-notch::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-top: calc(var(--notch-size) * 0.47) solid var(--notch-color);
+    border-right: var(--notch-size) solid transparent;
+    border-left: var(--notch-size) solid transparent;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+/* 上辺中央に食い込む▼。前のセクションの色を --notch-top-color に指定する */
+.has-notch-top {
+    position: relative;
+}
+
+.has-notch-top::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-top: calc(var(--notch-size) * 0.47) solid var(--notch-top-color);
+    border-right: var(--notch-size) solid transparent;
+    border-left: var(--notch-size) solid transparent;
+    transform: translateX(-50%);
+    pointer-events: none;
+}

@@ -1,0 +1,291 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   試験日程
+   緑のヘッダーを持つカードを2枚。中身は「試験名 / 対象団体 / 日付」の定義リスト。
+   ========================================================================== */
+
+.schedule {
+    padding: 190px 0 238px;
+    background-color: var(--color-bg);
+}
+
+.schedule__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 570px));
+    justify-content: center;
+    gap: 22px;
+    margin-top: 103px;
+}
+
+.schedule__card {
+    overflow: hidden;
+    /* カンプ実測: 緑のヘッダーも含めてカード全体を黒い枠で囲う */
+    border: 2px solid var(--color-text);
+    border-radius: 12px;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-card);
+}
+
+/* details の開閉ボタン。標準の三角マーカーは消す */
+.schedule__card-head {
+    padding: 22px 20px;
+    background-color: var(--color-teal);
+    list-style: none;
+}
+
+.schedule__card-head::-webkit-details-marker {
+    display: none;
+}
+
+.schedule__card-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: var(--color-white);
+    font-size: 26px;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.06em;
+}
+
+.schedule__card-icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.schedule__card-body {
+    padding: 42px 30px 52px;
+}
+
+/* 試験ごとの行 */
+.schedule__row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: 16px;
+}
+
+.schedule__row + .schedule__row {
+    margin-top: 42px;
+    padding-top: 42px;
+    border-top: 1px solid var(--color-yellow);
+}
+
+.schedule__exam {
+    font-size: 24px;
+    letter-spacing: 0.04em;
+}
+
+.schedule__detail {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.schedule__detail-line {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+/* 「両団体共通」など、対象団体を示すタグ */
+.schedule__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    background-color: var(--color-teal-pale);
+    color: var(--color-text);
+    font-size: 13px;
+    font-weight: var(--weight-medium);
+    white-space: nowrap;
+}
+
+.schedule__tag--link {
+    background-color: var(--color-teal);
+    color: var(--color-white);
+    transition: opacity var(--transition);
+}
+
+.schedule__tag--link:hover {
+    opacity: 0.85;
+}
+
+.schedule__tag-icon {
+    width: 13px;
+    height: 13px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.schedule__date {
+    font-size: 28px;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.schedule__date-day {
+    font-size: 15px;
+    font-weight: var(--weight-medium);
+}
+
+.schedule__dates {
+    font-size: 19px;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.04em;
+}
+
+.schedule__note {
+    margin-top: 62px;
+    font-size: 15px;
+    text-align: center;
+}
+
+@media (max-width: 1100px) {
+    .schedule__card-body {
+        padding: 22px 20px 28px;
+    }
+
+    .schedule__row {
+        grid-template-columns: 1fr;
+        row-gap: 12px;
+        justify-items: center;
+    }
+
+    .schedule__detail {
+        align-items: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .schedule {
+        padding: 65px 0 76px;
+    }
+
+    /* このセクションだけリード文を小さくする */
+    .schedule .section-lead {
+        font-size: 10px;
+    }
+
+    .schedule__cards {
+        grid-template-columns: minmax(0, 340px);
+        gap: 24px;
+        margin-top: 40px;
+    }
+
+    /* SPだけ開閉する。押せることが分かるよう右端に矢印を出す */
+    .schedule__card-head {
+        position: relative;
+        padding: 14px 34px 14px 16px;
+        cursor: pointer;
+    }
+
+    .schedule__card-head::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid var(--color-white);
+        border-bottom: 2px solid var(--color-white);
+        transform: translateY(-70%) rotate(45deg);
+        transition: transform var(--transition);
+    }
+
+    .schedule__card[open] .schedule__card-head::after {
+        transform: translateY(-30%) rotate(-135deg);
+    }
+
+    .schedule__card-title {
+        font-size: 19px;
+    }
+
+    .schedule__card-icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* SPカンプは全体が左寄せで、1行目だけ「試験名 ＋ 両団体共通」が横並びになる。
+       .schedule__detail を display:contents で透過させ、行そのものを
+       折り返し可能な flex にすることで、この2種類の並びを1つの指定でまかなう */
+    .schedule__card-body {
+        padding: 20px 36px 24px;
+    }
+
+    .schedule__row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        column-gap: 16px;
+        row-gap: 8px;
+    }
+
+    .schedule__detail {
+        display: contents;
+    }
+
+    /* 100%幅にすることで、必ず次の行へ送られる */
+    .schedule__date,
+    .schedule__detail-line {
+        flex-basis: 100%;
+    }
+
+    .schedule__detail-line {
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .schedule__row + .schedule__row {
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top-color: var(--color-peach);
+    }
+
+    .schedule__exam {
+        font-size: 14px;
+    }
+
+    /* カンプは「2026年」だけ小さく、「11月1日」を大きく見せている */
+    .schedule__date {
+        font-size: 28px;
+    }
+
+    .schedule__date-year {
+        font-size: 0.64em;
+    }
+
+    .schedule__date-day {
+        font-size: 0.52em;
+    }
+
+    .schedule__tag {
+        padding: 7px 13px;
+        font-size: 12px;
+    }
+
+    .schedule__dates {
+        font-size: 16px;
+    }
+
+    .schedule__note {
+        margin-top: 32px;
+        font-size: 12px;
+        line-height: 1.8;
+        text-align: left;
+    }
+}

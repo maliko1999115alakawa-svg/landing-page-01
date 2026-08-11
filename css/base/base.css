@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   ベース
+   要素そのものに対する既定スタイル。クラスを付けなくても効く範囲だけを置く。
+   ========================================================================== */
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-base);
+    font-size: 16px;
+    font-weight: var(--weight-medium);
+    line-height: 1.8;
+    letter-spacing: 0.04em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+/* デザイン上、数字は和文より字幅の締まった書体を使う */
+.num {
+    font-family: var(--font-number);
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.02em;
+}
+
+/* キーボード操作時のフォーカスははっきり見せる */
+:focus-visible {
+    outline: 3px solid var(--color-orange);
+    outline-offset: 3px;
+}
+
+/* スマホ版だけ表示（改行用の<br>などに使う） */
+.u-sp-only {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .u-sp-only {
+        display: inline;
+    }
+}
+
+/* 読み上げには残すが画面には出さない要素（複雑な図版の代替テキストなど） */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}

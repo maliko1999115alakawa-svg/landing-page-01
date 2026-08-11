@@ -1,0 +1,157 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   ヘッダー
+   PCはロゴ・ナビ・CTAの横並び。SPはロゴ＋ハンバーガーで、開くとドロワーが降りる。
+   ========================================================================== */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--header-height);
+    /* ヒーローとの間のクリーム余白。ヘッダー本体の高さとは分けて持つ */
+    margin-bottom: var(--header-gap);
+    background-color: var(--color-bg);
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: calc(1080px + var(--container-gutter) * 2);
+    margin-inline: auto;
+    padding-inline: var(--container-gutter);
+}
+
+.header__logo {
+    flex-shrink: 0;
+    font-size: 22px;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+/* ナビとCTAはPCでは一列に並べる（SPではドロワー内で縦積みに切り替える） */
+.header__nav {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.header__list {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.header__link {
+    font-size: 16px;
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    transition: color var(--transition);
+}
+
+.header__link:hover {
+    color: var(--color-orange);
+}
+
+.header__cta {
+    flex-shrink: 0;
+    margin-left: 32px;
+}
+
+/* --- ハンバーガー（SPのみ表示） ----------------------------------------- */
+.header__toggle {
+    display: none;
+    position: relative;
+    width: 28px;
+    height: 20px;
+    margin-left: 16px;
+}
+
+.header__toggle-bar {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text);
+    transition: transform var(--transition), opacity var(--transition);
+}
+
+.header__toggle-bar:nth-child(1) {
+    top: 0;
+}
+
+.header__toggle-bar:nth-child(2) {
+    top: 9px;
+}
+
+.header__toggle-bar:nth-child(3) {
+    top: 18px;
+}
+
+/* 開いているあいだは×に変形させる */
+.header__toggle[aria-expanded="true"] .header__toggle-bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.header__toggle[aria-expanded="true"] .header__toggle-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.header__toggle[aria-expanded="true"] .header__toggle-bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+@media (max-width: 767px) {
+    .header__inner {
+        padding-inline: 16px;
+    }
+
+    .header__logo {
+        font-size: 17px;
+    }
+
+    .header__toggle {
+        display: block;
+    }
+
+    /* ナビはドロワーとして画面幅いっぱいに降ろす */
+    .header__nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        display: block;
+        max-height: 0;
+        margin-left: 0;
+        overflow: hidden;
+        background-color: var(--color-bg);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+        transition: max-height var(--transition);
+    }
+
+    .header__nav[data-open="true"] {
+        max-height: 420px;
+    }
+
+    .header__list {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .header__link {
+        display: block;
+        padding: 16px 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        font-size: 15px;
+    }
+
+    .header__cta {
+        margin: 16px 20px 20px;
+    }
+}

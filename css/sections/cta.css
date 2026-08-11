@@ -1,0 +1,200 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   クロージングCTA
+   カンプ(1440×782)の構図をそのまま保つ。
+   黄色い地は 1298×782 の図形で右上が大きく丸く、その右にイラストが乗り出す。
+
+   テキストは1440pxで止めて中央に置き、黄色とイラストは画面幅に対する
+   割合(vw)で置いている。これで広い画面でもイラストが右端まで届き、
+   構図の比率も保たれる。
+   ========================================================================== */
+
+.cta {
+    position: relative;
+}
+
+/* 黄色い地。カンプでは 1298/1440 = 90.14% の幅で、右上が大きく丸い。
+   画面幅に対する割合で置くので、広い画面でも構図の比率が保たれる */
+.cta__bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 90.14vw;
+    background-color: var(--color-yellow-cta);
+    border-top-right-radius: 19.72vw;
+}
+
+.cta__inner {
+    position: relative;
+    max-width: 1440px;
+    margin-inline: auto;
+    /* 上下181px / 左139px（カンプ実測）を1440基準の割合で */
+    padding: 12.29% 0 12.85% 6%;
+}
+
+/* カンプでは、イラスト以外のすべてに柔らかい影がかかっている。
+   カンプ実測(65pxの見出し)で 右4px / 下4.7px / ぼかし5px なので em に置き換えた。
+   text-shadow ではなく filter を使うことで、あしらいSVGやアイコンにも同じ影が乗る */
+.cta__eyebrow,
+.cta__title,
+.cta__note {
+    filter: drop-shadow(0.032em 0.048em 0.025em rgba(0, 0, 0, 0.3));
+}
+
+.cta__eyebrow {
+    position: relative;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: var(--weight-medium);
+    letter-spacing: 0;
+}
+
+/* 「さっそく、」の左上に配置するSVGアイコン */
+.cta__eyebrow::before {
+    content: "";
+    position: absolute;
+    top: -65px;
+    left: 5%;
+    width: 80px;
+    height: 80px;
+    background-image: url("../../images/cta/exagg.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* カンプ実測 65px / 行送り85px、「合格」だけ緑 */
+.cta__title {
+    margin-top: 10px;
+    font-size: 65px;
+    font-weight: var(--weight-bold);
+    line-height: 85px;
+    letter-spacing: 0.04em;
+}
+
+.cta__title-accent {
+    color: var(--color-teal);
+}
+
+/* カンプ実測でボタン上端は yrel444 */
+.cta__action {
+    margin-top: 29px;
+}
+
+.cta__note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 9px;
+    padding-left: 74px;
+    font-size: 15px;
+}
+
+.cta__note-icon {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+}
+
+.cta__note-link {
+    border-bottom: 1px solid currentColor;
+}
+
+/* イラスト。カンプ実測 862×587 で、画面右端を58pxはみ出し、
+   黄色帯の下へ80pxはみ出す。すべて画面幅に対する割合なので一緒に拡大縮小する */
+.cta__illust {
+    position: absolute;
+    right: -4.03vw;
+    bottom: -7vw;
+    width: 50vw;
+    height: auto;
+    pointer-events: none;
+}
+
+@media (max-width: 1100px) {
+    .cta__inner {
+        padding: 11% 0 12% 8%;
+    }
+
+    .cta__title {
+        font-size: 40px;
+        line-height: 1.35;
+    }
+
+    .cta__eyebrow {
+        font-size: 20px;
+    }
+
+    .cta__note {
+        padding-left: 40px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   スマートフォン
+   SPカンプ(帯 402×507)ではイラストが文章より「下」に来て、帯の下へはみ出す
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+    /* 帯は右端を少し残し、右上だけ大きめの角丸 */
+    .cta__bg {
+        width: 92.8%;
+        border-top-right-radius: 6.7vw;
+    }
+
+    .cta__inner {
+        max-width: none;
+        /* カンプ実測: 上40px / 左57px(=14.2%) */
+        padding: 40px 6% 210px 14.2%;
+    }
+
+    /* 以下は 402px のカンプ実測値を上限に、狭い端末では画面幅に追従させる。
+       px固定のままだと320px幅で見出しが4行になり、レイアウトが破綻するため */
+    .cta__eyebrow {
+        font-size: min(15px, 3.73vw);
+    }
+
+    .cta__eyebrow::before {
+        top: -14px;
+        width: 24px;
+        height: 16px;
+    }
+
+    .cta__title {
+        margin-top: 8px;
+        /* カンプ実測: 1行の文字幅249px / 行送り40px */
+        font-size: min(29px, 7.21vw);
+        line-height: 1.38;
+    }
+
+    .cta__action {
+        margin-top: 18px;
+    }
+
+    /* カンプでは注記だけ小さく、ボタンの幅の中で中央に置かれる */
+    .cta__note {
+        justify-content: center;
+        gap: min(5px, 1.24vw);
+        max-width: min(260px, 64.7vw);
+        margin-top: 10px;
+        padding-left: 0;
+        font-size: min(10px, 2.49vw);
+    }
+
+    .cta__note-icon {
+        width: min(12px, 2.99vw);
+        height: min(12px, 2.99vw);
+    }
+
+    /* 文章の下に置き、帯の下へはみ出させる（カンプ実測 325px幅・右寄せ） */
+    .cta__illust {
+        top: 54.4%;
+        right: 0;
+        bottom: auto;
+        left: auto;
+        width: 80.8%;
+    }
+}

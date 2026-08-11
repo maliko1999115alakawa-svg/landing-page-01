@@ -1,0 +1,302 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   実技試験対策（3つの強み）
+   黄色い帯の上にカードを3枚並べ、下に対応団体のバナーを置く。
+   ========================================================================== */
+
+.support {
+    --notch-color: var(--color-yellow);
+    /* solveの三角をsupportの前面に描く */
+    --notch-top-color: var(--color-teal-light);
+
+    position: relative;
+    /* solveの緑バックより手前に出るよう z-index を上げる */
+    z-index: 2;
+    padding: 100px 0 150px;
+    background-color: var(--color-yellow);
+}
+
+.support__heading {
+    position: relative;
+    text-align: center;
+}
+
+/* 「気軽に」＋斜線が一体のSVG。見出しテキストの左上あたりに重なるよう配置 */
+.support__eyebrow {
+    position: absolute;
+    top: -59px;
+    left: 30%;
+    width: 12%;
+    max-width: 176px;
+    height: auto;
+}
+
+.support__title {
+    /* あしらいと重ねるぶんの余白 */
+    margin-top: 82px;
+    font-size: 46px;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.06em;
+}
+
+.support__lead {
+    margin-top: 28px;
+    font-size: 28px;
+    letter-spacing: 0.06em;
+}
+
+/* SPカンプは「変える、」で改行される。かたまりごとに折り返させておけば
+   PCは1行のまま、SPだけ2行になる */
+.support__lead-line {
+    display: inline-block;
+}
+
+/* --- カード3枚 ----------------------------------------------------------- */
+.support__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    margin-top: 62px;
+}
+
+.support__card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: var(--color-bg);
+}
+
+.support__card-image {
+    width: 100%;
+    aspect-ratio: 365 / 240;
+    object-fit: cover;
+}
+
+.support__card-body {
+    padding: 22px 24px 30px;
+}
+
+.support__card-title {
+    font-size: 28px;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.04em;
+}
+
+.support__card-text {
+    margin-top: 12px;
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+/* --- 対応団体のバナー ---------------------------------------------------- */
+.support__banner-wrap {
+    position: relative;
+    margin-top: 100px;
+    margin-left: 40px;
+}
+
+/* 吹き出し。カンプ実測 箱811×96＋右へ40pxの尻尾、影は右19px/下23px。
+   尻尾が細く尖った形なので clip-path で切り抜く。
+   clip-path は filter の結果ごと切り取ってしまうため、影は外側の要素に付ける。 */
+.support__banner {
+    position: relative;
+    max-width: 851px;
+    margin-left: 16px;
+    /* 右端はイラストの手前まで */
+    margin-right: 190px;
+    filter: drop-shadow(19px 23px 0 var(--color-orange-deep));
+}
+
+/* 白い面より一回り大きい同じ形を敷いて、2pxの枠線に見せる */
+.support__banner::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background-color: var(--color-orange-deep);
+    clip-path: polygon(
+        0 0,
+        95.3% 0,
+        95.3% 29.17%,
+        100% 36.46%,
+        95.3% 64.58%,
+        95.3% 100%,
+        0 100%
+    );
+}
+
+.support__banner-text {
+    position: relative;
+    /* 尻尾のぶん右の余白を広く取る */
+    padding: 24px 74px 24px 57px;
+    background-color: var(--color-white);
+    clip-path: polygon(
+        0 0,
+        95.3% 0,
+        95.3% 29.17%,
+        100% 36.46%,
+        95.3% 64.58%,
+        95.3% 100%,
+        0 100%
+    );
+    font-size: 20px;
+    line-height: 45px;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.support__banner-illust {
+    position: absolute;
+    right: 70px;
+    bottom: -50px;
+    width: 180px;
+    pointer-events: none;
+}
+
+@media (max-width: 1100px) {
+    .support__cards {
+        gap: 20px;
+    }
+
+    .support__card-title {
+        font-size: 19px;
+    }
+
+    .support__banner-illust {
+        width: 150px;
+    }
+
+    .support__banner {
+        margin-right: 220px;
+    }
+}
+
+@media (max-width: 767px) {
+    .support {
+        padding: 44px 0 39px;
+    }
+
+    /* SPは見出しテキストの左上に合わせる */
+    .support__eyebrow {
+        top: -20px;
+        left: 9%;
+        width: 46px;
+        max-width: none;
+    }
+
+    .support__title {
+        /* カンプ実測: セクション上端から67pxで文字が始まる */
+        margin-top: 13px;
+        font-size: 28px;
+    }
+
+    .support__lead {
+        margin-top: 14px;
+        font-size: 12px;
+        line-height: 1.55;
+    }
+
+    /* SPは必ず2行に分けて見せる */
+    .support__lead .support__lead-line {
+        display: block;
+    }
+
+    /* カンプ実測 カード幅300px・間隔23px */
+    .support__cards {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        margin-inline: auto;
+        gap: 23px;
+        margin-top: 29px;
+    }
+
+    /* カンプ実測 写真300×190 */
+    .support__card-image {
+        aspect-ratio: 300 / 190;
+    }
+
+    .support__card-body {
+        padding: 18px 29px 30px;
+    }
+
+    .support__card-title {
+        font-size: 14px;
+    }
+
+    .support__card-text {
+        margin-top: 11px;
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .support__banner-wrap {
+        margin-top: 50px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* SPカンプでは影が無く、尻尾は下（イラスト側）を向く。
+       枠線を出したいので clip-path はやめ、疑似要素の三角形で尻尾を作る */
+    .support__banner {
+        max-width: none;
+        /* カンプ実測 325px（コンテナ354pxに対して92%） */
+        width: 92%;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        filter: none;
+    }
+
+    .support__banner::before {
+        display: none;
+    }
+
+    .support__banner-text {
+        position: relative;
+        padding: 18px 17px 18px;
+        border: 2px solid var(--color-orange);
+        clip-path: none;
+        font-size: 12px;
+        line-height: 2.4;
+        letter-spacing: 0.02em;
+        white-space: normal;
+        text-align: left;
+    }
+
+    /* 尻尾は枠線色と白の三角を重ねて表現する */
+    .support__banner-text::before,
+    .support__banner-text::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 18%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-color: transparent;
+        border-bottom-width: 0;
+    }
+
+    .support__banner-text::before {
+        margin-top: 0;
+        border-width: 14px 13px 0;
+        border-top-color: var(--color-orange-deep);
+    }
+
+    .support__banner-text::after {
+        margin-top: -3px;
+        margin-left: 2px;
+        border-width: 11px 11px 0;
+        border-top-color: var(--color-white);
+    }
+
+    .support__banner-illust {
+        position: static;
+        display: block;
+        /* 素材の中身が右寄りなので、見た目が中央に来るよう少し戻す */
+        width: 100px;
+        margin: 10px auto 0;
+        transform: translateX(-16.5%);
+    }
+}

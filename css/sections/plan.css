@@ -1,0 +1,204 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   プラン・料金
+   単発プランと3回パックを横並び。3回パックだけオレンジ枠＋「おすすめ」バッジ。
+   ========================================================================== */
+
+.plan {
+    --notch-color: var(--color-yellow);
+    --notch-top-color: var(--color-bg);
+
+    padding: 185px 0 130px;
+    background-color: var(--color-yellow);
+}
+
+.plan__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 466px);
+    justify-content: center;
+    gap: 30px;
+    margin-top: 111px;
+}
+
+/* --- カード -------------------------------------------------------------- */
+.plan__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 34px 40px 40px;
+    border: 1px solid var(--color-text);
+    background-color: var(--color-card);
+}
+
+.plan__card--recommended {
+    border: 2px solid var(--color-orange);
+}
+
+.plan__name {
+    font-size: 26px;
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.1em;
+    text-align: center;
+}
+
+.plan__price {
+    margin-top: 26px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+.plan__price-amount {
+    font-size: 58px;
+    line-height: 1.1;
+}
+
+.plan__price-unit {
+    font-size: 28px;
+    font-weight: var(--weight-bold);
+}
+
+.plan__price-times {
+    font-family: var(--font-number);
+    font-size: 26px;
+    font-weight: var(--weight-regular);
+}
+
+.plan__list {
+    margin-top: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+}
+
+.plan__action {
+    margin-top: auto;
+    padding-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+/* --- 「おすすめ」バッジ ------------------------------------------------- */
+/* カンプのカード(466×517)の右上を基準にした実測値 */
+.plan__badge {
+    position: absolute;
+    top: -74px;
+    right: -59px;
+    width: 127px;
+    height: auto;
+}
+
+/* --- 装飾イラスト -------------------------------------------------------
+   カンプのカード(466×517)の角を基準にした実測値。
+   カード幅が固定になる1301px以上でのみ表示するため、そのまま px で置く */
+.plan__deco {
+    position: absolute;
+    height: auto;
+    pointer-events: none;
+}
+
+/* ひらめき（デスクの人物） */
+.plan__deco--left {
+    top: 259px;
+    left: -139px;
+    width: 191px;
+}
+
+/* 階段 */
+.plan__deco--steps {
+    top: 240px;
+    right: -178px;
+    width: 277px;
+}
+
+@media (max-width: 1300px) {
+    /* カードの外側に置く余白が無くなるので、いったん隠す */
+    .plan__deco--left,
+    .plan__deco--steps {
+        display: none;
+    }
+}
+
+@media (max-width: 1060px) {
+    .plan__cards {
+        grid-template-columns: repeat(2, minmax(0, 467px));
+    }
+}
+
+@media (max-width: 767px) {
+    .plan {
+        padding: 56px 0 64px;
+    }
+
+    .plan__cards {
+        /* カンプ実測 274px */
+        grid-template-columns: minmax(0, 274px);
+        gap: 56px;
+        margin-top: 72px;
+    }
+
+    .plan__card {
+        padding: 26px 24px 32px;
+    }
+
+    .plan__name {
+        font-size: 20px;
+    }
+
+    .plan__price-amount {
+        font-size: 34px;
+    }
+
+    .plan__price-unit {
+        font-size: 17px;
+    }
+
+    .plan__price-times {
+        font-size: 16px;
+    }
+
+    .plan__list {
+        font-size: 14px;
+        gap: 12px;
+    }
+
+    /* 単発プランはリストが1行少ないぶん、同じ高さに揃えるためpaddingを追加 */
+    .plan__card:first-child .plan__list {
+        padding-bottom: 33px;
+    }
+
+    .plan__badge {
+        top: -30px;
+        right: -14px;
+        width: 84px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   スマートフォン
+   SPカンプでは装飾がカードの内側・右下に、PCより小さく置かれる
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+    .plan__deco--left,
+    .plan__deco--steps {
+        display: block;
+        top: auto;
+        left: auto;
+    }
+
+    /* ボタンにかからないよう、カンプ同様ボタンの上に収める */
+    .plan__deco--left {
+        bottom: 20%;
+        right: -5%;
+        width: 25%;
+    }
+
+    .plan__deco--steps {
+        bottom: 30%;
+        right: -8%;
+        width: 33%;
+    }
+}

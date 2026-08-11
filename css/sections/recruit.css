@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   リクルート（キャリアコンサルタントの方へ）
+   左に「お知らせ」バッジ＋本文、右に問い合わせボタン。
+   ========================================================================== */
+
+.recruit {
+    padding: 168px 0 92px;
+    background-color: var(--color-bg);
+}
+
+.recruit__inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: calc(1290px + var(--container-gutter) * 2);
+    margin-inline: auto;
+    padding-inline: var(--container-gutter);
+}
+
+.recruit__badge {
+    flex-shrink: 0;
+    margin-top: 30px;
+    padding: 6px 20px;
+    border: 1px solid var(--color-text);
+    border-radius: 999px;
+    background-color: var(--color-yellow);
+    box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.35);
+    font-size: 15px;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+}
+
+.recruit__body {
+    flex: 1;
+}
+
+.recruit__title {
+    font-size: 27px;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.1em;
+}
+
+.recruit__text {
+    margin-top: 20px;
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+.recruit__action {
+    flex-shrink: 0;
+    margin-top: 22px;
+}
+
+/* リクルート内のボタンは角丸を控えめにして、フッターのものと差をつける */
+.recruit__action .button {
+    min-width: 250px;
+    padding: 16px 28px;
+    border-radius: 10px;
+    box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.3);
+    font-size: 20px;
+}
+
+@media (max-width: 1100px) {
+    .recruit {
+        padding: 120px 0 72px;
+    }
+
+    .recruit__inner {
+        flex-wrap: wrap;
+    }
+
+    .recruit__action {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .recruit {
+        padding: 88px 0 48px;
+    }
+
+    .recruit__inner {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* PCの上マージンはSPでは効かせない（本文とボタンの間が空きすぎるため） */
+    .recruit__action {
+        margin-top: 0;
+    }
+
+    /* 文字まわりはカンプ実測に寄せて全体的に小さく */
+    .recruit__badge {
+        margin-top: 0;
+        align-self: flex-start;
+        padding: 4px 14px;
+        font-size: 12px;
+    }
+
+    .recruit__title {
+        font-size: 14px;
+    }
+
+    .recruit__text {
+        margin-top: 10px;
+        font-size: 11px;
+        line-height: 1.55;
+    }
+
+    .recruit__action .button {
+        width: 100%;
+        min-width: 0;
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}

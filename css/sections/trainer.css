@@ -1,0 +1,188 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   講師紹介
+   3枚のカードを横並び。左右の矢印で1枚ずつスライドできる。
+   ========================================================================== */
+
+.trainer {
+    padding: 166px 0 209px;
+    background-color: var(--color-bg);
+}
+
+.trainer__carousel {
+    position: relative;
+    margin-top: 56px;
+}
+
+/* はみ出したカードは隠し、スクロール位置で見せる枚数を切り替える */
+.trainer__viewport {
+    overflow: hidden;
+}
+
+.trainer__list {
+    display: flex;
+    gap: 35px;
+    transition: transform 0.4s ease;
+}
+
+.trainer__item {
+    flex: 0 0 calc((100% - 70px) / 3);
+}
+
+.trainer__card {
+    height: 100%;
+    padding: 50px 30px 25px;
+    border: 2px solid var(--color-orange);
+    background-color: var(--color-card);
+    text-align: center;
+}
+
+.trainer__photo {
+    width: 200px;
+    height: 200px;
+    margin-inline: auto;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.trainer__name {
+    margin-top: 26px;
+    font-size: 28px;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.12em;
+}
+
+.trainer__comment {
+    margin-top: 18px;
+    font-size: 17px;
+    line-height: 1.9;
+    text-align: left;
+}
+
+/* --- 左右の送りボタン ---------------------------------------------------- */
+.trainer__arrow {
+    position: absolute;
+    top: 50%;
+    width: 46px;
+    height: 54px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: none;
+    transform: translateY(-50%);
+    transition: opacity var(--transition);
+    cursor: pointer;
+}
+
+.trainer__arrow:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.trainer__arrow--prev {
+    left: -80px;
+    background-image: url("../../images/trainer/carousel_left.svg");
+}
+
+.trainer__arrow--next {
+    right: -80px;
+    background-image: url("../../images/trainer/carousel_right.svg");
+}
+
+@media (max-width: 1400px) {
+    .trainer__arrow--prev {
+        left: -54px;
+    }
+
+    .trainer__arrow--next {
+        right: -54px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .trainer__arrow {
+        width: 36px;
+        height: 42px;
+    }
+
+    .trainer__arrow--prev {
+        left: -44px;
+    }
+
+    .trainer__arrow--next {
+        right: -44px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .trainer__item {
+        flex: 0 0 calc((100% - 35px) / 2);
+    }
+}
+
+@media (max-width: 767px) {
+    .trainer {
+        padding: 64px 0 72px;
+    }
+
+    /* このセクションだけリード文を小さくする */
+    .trainer .section-lead {
+        font-size: 12px;
+    }
+
+    .trainer__carousel {
+        margin-top: 40px;
+    }
+
+    /* ボタン分の幅を確保するため viewport を左右40pxずつ内側に */
+    .trainer__viewport {
+        margin-inline: 40px;
+    }
+
+    /* 横スクロールカルーセル（縦積みをやめる） */
+    .trainer__list {
+        flex-direction: row;
+        gap: 16px;
+    }
+
+    /* 1枚ぶんの幅 = viewport幅 = 100% */
+    .trainer__item {
+        flex: 0 0 100%;
+    }
+
+    /* SPでもボタン表示 */
+    .trainer__arrow {
+        display: block;
+        width: 32px;
+        height: 38px;
+    }
+
+    .trainer__arrow--prev {
+        left: 0;
+    }
+
+    .trainer__arrow--next {
+        right: 0;
+    }
+
+    .trainer__card {
+        padding: 24px 20px 28px;
+    }
+
+    .trainer__photo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .trainer__name {
+        margin-top: 18px;
+        font-size: 19px;
+    }
+
+    .trainer__comment {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+}

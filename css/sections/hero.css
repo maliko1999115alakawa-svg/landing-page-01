@@ -1,0 +1,388 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   ヒーロー
+   写真を全面に敷き、左側に黄色い斜めの図形を重ねる。
+
+   PCカンプは 1440×860。画面幅が変わっても崩れないよう、
+   セクション自体を aspect-ratio でその比率に保ち、
+   中の要素は位置も大きさも「割合」で置いている。
+   これで 1101px〜1440px の間は全体が相似形で拡大縮小する。
+   （1440px を超えるぶんは高さを 860px で頭打ちにし、中身は中央の1440pxに収める）
+   ========================================================================== */
+
+.hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1440 / 860;
+    max-height: 860px;
+    overflow: hidden;
+    background-color: var(--color-yellow);
+}
+
+.hero__photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 62% 40%;
+}
+
+/* 左側の黄色い斜め図形。上辺521px→下辺207pxへ傾く */
+.hero__shape {
+    position: absolute;
+    inset: 0;
+    /* カンプでは黄色い図形が重なっていて、斜めの縁だけ色が濃くなる。
+       外側（この要素）を濃い黄色にして、内側を疑似要素で主の黄色に塗る */
+    background-color: var(--color-yellow-deep);
+    clip-path: polygon(0 0, 37% 0, 24% 100%, 0 100%);
+}
+
+/* 濃い帯の幅はカンプ実測71px＝画面幅1440の4.93%ぶん内側に寄せる */
+.hero__shape::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-yellow);
+    clip-path: polygon(0 0, 32.07% 0, 19.07% 100%, 0 100%);
+}
+
+/* 人物の切り抜き。PCでは使わない（SPのみ図形の上に重ねる） */
+.hero__woman {
+    display: none;
+}
+
+.hero__inner {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+}
+
+/* --- 見出し上のリード（文字＋ブレースが一体のSVG） ---------------------- */
+/* カンプ実測 x=47 y=90 385×150 を 1440×860 基準の割合に直している */
+.hero__brace {
+    position: absolute;
+    top: 16%;
+    left: 3%;
+    width: 22.5%;
+    height: auto;
+}
+
+/* --- キャッチコピー ------------------------------------------------------ */
+.hero__title {
+    position: absolute;
+    top: 33.84%;
+    left: 7.1%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.15em;
+    font-weight: var(--weight-bold);
+    line-height: 1.15;
+    letter-spacing: 0.04em;
+}
+
+.hero__title-line {
+    position: relative;
+    display: block;
+    /* 上paddingをなくし、文字上部がボックスからはみ出るようにする */
+    padding: 0 0.52em 0.21em;
+    font-size: min(66px, 4.58vw);
+    white-space: nowrap;
+}
+
+/* 文字の下2/3だけを覆う白いボックスを擬似要素で配置 */
+.hero__title-line::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 67%;
+    background-color: var(--color-white);
+    z-index: -1;
+}
+
+/* 影は文字サイズ基準(em)で持つ。px固定だと画面が小さいとき
+   文字に対して影だけが大きく残り、離れて見えてしまう。
+   カンプのPC値は 66px に対して 5px ＝ 0.076em */
+.hero__title-line:first-child {
+    text-shadow: -0.076em -0.076em 0.045em #ffffff;
+}
+
+.hero__title-line:last-child {
+    text-shadow: 0.076em 0.076em 0 rgba(0, 0, 0, 0.25);
+    color: var(--color-orange);
+}
+
+/* 「重ねる」「合格」だけひとまわり大きく見せる */
+.hero__title-strong {
+    font-size: min(88px, 6.11vw);
+}
+
+.hero__title-accent {
+    color: var(--color-orange);
+}
+
+/* カンプ実測 118×146 */
+.hero__sparkle {
+    position: absolute;
+    top: 42%;
+    left: 85%;
+    width: 13%;
+    height: auto;
+    pointer-events: none;
+}
+
+/* --- 特徴バッジ3つ（カンプ実測 206×115、間隔22px） --------------------- */
+.hero__badges {
+    position: absolute;
+    top: 71.16%;
+    left: 9.17%;
+    display: flex;
+    gap: min(22px, 1.53vw);
+}
+
+/* 3つとも文字色はオレンジ。地色はページと同じクリーム */
+.hero__badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: min(206px, 14.31vw);
+    min-height: min(115px, 7.99vw);
+    padding: min(12px, 0.83vw) min(18px, 1.25vw);
+    /* 右上だけ角を残し、他3隅は角丸 */
+    border-radius: min(24px, 1.67vw) 0 min(24px, 1.67vw) min(24px, 1.67vw);
+    background-color: var(--color-bg);
+    color: var(--color-orange-deep);
+    text-align: center;
+}
+
+.hero__badge-label {
+    font-size: min(17px, 1.18vw);
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.06em;
+}
+
+.hero__badge-value {
+    margin-top: 2px;
+    font-size: min(30px, 2.08vw);
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.hero__badge-unit {
+    font-size: min(17px, 1.18vw);
+}
+
+/* --------------------------------------------------------------------------
+   タブレット(768〜1100px): 絶対配置をやめて縦に流す
+   SPはカンプが重ね構成のままなので、この指定は 768px 以上に限定する
+   -------------------------------------------------------------------------- */
+@media (max-width: 1100px) and (min-width: 768px) {
+    .hero {
+        display: flex;
+        flex-direction: column;
+        aspect-ratio: auto;
+        max-height: none;
+        padding-bottom: 48px;
+    }
+
+    .hero__photo {
+        position: relative;
+        order: -1;
+        height: 300px;
+        margin-bottom: 28px;
+    }
+
+    .hero__shape {
+        display: none;
+    }
+
+    .hero__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding-inline: var(--container-gutter);
+    }
+
+    /* リードは文字が入った素材なので、SPでも消さずに中央へ置く */
+    .hero__brace {
+        position: static;
+        width: min(385px, 78%);
+        margin-inline: auto;
+    }
+
+    .hero__sparkle {
+        display: none;
+    }
+
+    .hero__title,
+    .hero__badges {
+        position: static;
+        top: auto;
+        left: auto;
+    }
+
+    .hero__title {
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .hero__title-line {
+        font-size: clamp(26px, 5.4vw, 44px);
+    }
+
+    .hero__title-strong {
+        font-size: clamp(32px, 6.8vw, 56px);
+    }
+
+    /* 3つ横並びのまま収める */
+    .hero__badges {
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 12px;
+        width: 100%;
+        max-width: 640px;
+        margin-top: 28px;
+    }
+
+    .hero__badge {
+        flex: 1 1 150px;
+        min-width: 0;
+        min-height: 0;
+        padding: 12px 14px;
+        border-radius: 16px;
+    }
+
+    .hero__badge-label,
+    .hero__badge-unit {
+        font-size: 13px;
+    }
+
+    .hero__badge-value {
+        font-size: 19px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   スマートフォン
+   SPカンプ(402×522)も写真の上に重ねる構成。位置はすべてその比率で指定する
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+    .hero {
+        aspect-ratio: 402 / 522;
+        max-height: none;
+        background-color: var(--color-bg);
+    }
+
+    /* 黄色い図形は上辺いっぱいから左下へ向かって斜めに抜ける */
+    .hero__shape {
+        clip-path: polygon(0 0, 100% 0, 100% 19%, 0 46%);
+    }
+
+    /* 濃い帯の厚みはヒーロー高さの5%ぶん */
+    .hero__shape::before {
+        clip-path: polygon(0 0, 100% 0, 100% 14%, 0 39%);
+    }
+
+    /* hero.jpg の人物だけを、写真とまったく同じ位置・倍率で重ねる。
+       hero_woman は hero.jpg の (0,0)-(1916,1241) にあたるので、
+       写真の object-fit:cover と同じ計算で位置と大きさを出している。
+       .hero__inner(z-index:1) より下・.hero__shape より上に来る */
+    .hero__woman {
+        display: block;
+        position: absolute;
+        top: 11.99%;
+        left: -56.82%;
+        width: 180.8%;
+        height: 90.17%;
+        pointer-events: none;
+    }
+
+    /* カンプでは写真は原寸の35%で、ヒーローの下辺に揃えて置かれている。
+       高さが足りないぶん上に空くが、そこは黄色い図形が覆うので見えない。
+       （この比率だと縦がぴったり収まってしまい object-position の縦が効かないため、
+       高さで倍率を決めて下寄せする） */
+    .hero__photo {
+        top: auto;
+        /* 下へはみ出させて下端を少し切る（人物の位置をカンプに合わせるため） */
+        bottom: -5%;
+        height: 93%;
+        object-position: 70% 50%;
+    }
+
+    .hero__brace {
+        top: 9%;
+        left: 8%;
+        width: 50%;
+        margin: 0;
+        transform: none;
+    }
+
+    .hero__title {
+        top: 59.4%;
+        left: 6%;
+        gap: 0;
+    }
+
+    .hero__title-line {
+        padding: 0.1em 0.5em;
+        font-size: 6.8vw;
+        line-height: 1;
+    }
+
+    .hero__title-line::before {
+        height: 82%;
+    }
+
+    .hero__title-strong {
+        font-size: 8.9vw;
+    }
+
+    .hero__sparkle {
+        top: 48%;
+        left: 83%;
+        width: 13%;
+    }
+
+    /* バッジ3つは中央に寄せて1行に収める */
+    .hero__badges {
+        top: 77.6%;
+        left: 50%;
+        width: 65%;
+        gap: 1.2%;
+        transform: translateX(-50%);
+    }
+
+    /* カンプ実測 68×38、文字まわりの余白は左右11px・上下10px、角丸8px */
+    .hero__badge {
+        flex: 1 1 0;
+        min-width: 0;
+        min-height: 0;
+        padding: 2.6vw 5.5vw;
+        /* カンプは右上だけ直角 */
+        border-radius: 2vw 0 2vw 2vw;
+        /* body の 1.8 のままだと箱が縦に伸びるので詰める */
+        line-height: 1.2;
+    }
+
+    .hero__badge-label,
+    .hero__badge-unit {
+        font-size: 2vw;
+        letter-spacing: 0;
+        white-space: nowrap;
+    }
+
+    .hero__badge-value {
+        margin-top: 0.2vw;
+        font-size: 2.9vw;
+        letter-spacing: 0;
+    }
+}

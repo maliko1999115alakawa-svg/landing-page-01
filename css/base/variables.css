@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   デザイントークン
+   Figmaデザイン（LP_pc_2）から取得した値をここに集約する。
+   色やサイズを変えたいときは、原則このファイルだけを編集すれば済むようにしている。
+   ========================================================================== */
+
+:root {
+    /* --- 色: ベース ------------------------------------------------------ */
+    --color-bg: #fef7ea;           /* ページ全体のクリーム地 */
+    --color-text: #111111;
+    --color-text-muted: #4a4a4a;
+    --color-white: #ffffff;
+    --color-card: #fefbf9;         /* カードの地色（わずかに暖色） */
+
+    /* --- 色: イエロー系 -------------------------------------------------- */
+    --color-yellow: #fed86e;        /* 実技試験対策 / プラン / FAQ の背景帯 */
+    --color-yellow-deep: #fcce61;   /* ヒーローの斜めの縁に重なる濃い方 */
+    --color-yellow-cta: #fed65c;    /* クロージングCTAの背景帯 */
+    --color-yellow-footer: #fef2bb; /* フッター */
+    --color-yellow-marker: #f3cf60; /* 見出しの黄色マーカー */
+
+    /* --- 色: オレンジ系（アクセント） ------------------------------------ */
+    --color-orange: #f66119;        /* ボタン・カードの枠線 */
+    --color-orange-deep: #ff5300;   /* ヒーローのバッジ文字・ご利用の流れの枠線 */
+    --color-orange-soft: #f59267;   /* 「おすすめ」バッジ・流れ図の楕円 */
+    --color-peach: #ffd6bd;         /* Figma変数「ベースカラー新」 */
+    --color-peach-light: #fdf0e4;   /* ヒーローのバッジ地色 */
+
+    /* --- 色: グリーン系（あしらい） -------------------------------------- */
+    --color-teal: #2a9d8f;          /* Figma変数「あしらい」 */
+    --color-teal-light: #44c3ac;    /* 「お悩み解決」の帯 */
+    --color-teal-pale: #b7e4dc;     /* 「両団体共通」タグ */
+
+    /* --- 影 -------------------------------------------------------------- */
+    --shadow-button: 4px 4px 0 rgba(0, 0, 0, 0.5);
+    --shadow-button-accent: 4px 4px 0 rgba(255, 225, 0, 0.8);
+    --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+
+    /* --- 書体 ------------------------------------------------------------ */
+    /* 和文: Zen Kaku Gothic New / 数字: Inter（デザイン上の Google Sans Flex の代替） */
+    --font-base: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic",
+        "Meiryo", sans-serif;
+    --font-number: "Inter", var(--font-base);
+
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-bold: 700;
+    --weight-black: 900;
+
+    /* --- レイアウト ------------------------------------------------------ */
+    --container-width: 1160px;   /* PCデザインのコンテンツ幅（1440 - 左右140） */
+    --container-gutter: 24px;    /* SPでの左右余白 */
+    --header-height: 105px;      /* ヘッダー本体。細くしたいときはここを変える */
+    --header-gap: 20px;          /* ヘッダーとヒーローの間のクリーム余白 */
+    --section-radius: 30px;      /* 背景帯の角丸 */
+    --notch-size: 160px;         /* セクション境界の▼の幅（半分）。カンプ実測 320×83 */
+
+    /* --- 動き ------------------------------------------------------------ */
+    --transition: 0.25s ease;
+}
+
+/* SPではヘッダーを圧縮し、余白も詰める */
+@media (max-width: 767px) {
+    :root {
+        --header-height: 64px;
+        --header-gap: 0px;
+        --section-radius: 20px;
+        --notch-size: 40px;
+    }
+}

@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   ボタン
+   LP内には形の違う4種類が出てくるので、.button を土台にモディファイアで分ける。
+   ========================================================================== */
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: var(--weight-bold);
+    /* 行の高さで箱が膨らまないようにする */
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-align: center;
+    transition: transform var(--transition), opacity var(--transition),
+        background-color var(--transition);
+}
+
+.button:hover {
+    opacity: 0.88;
+    transform: translateY(-2px);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+.button__icon {
+    flex-shrink: 0;
+    width: 1.25em;
+    height: 1.25em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* --- ヘッダー・フッターの丸いオレンジボタン ---------------------------- */
+.button--pill {
+    min-width: 219px;
+    padding: 9px 26px;
+    border-radius: 999px;
+    background-color: var(--color-orange);
+    color: var(--color-white);
+    font-size: 15px;
+}
+
+/* --- 同じ形の白抜き版（フッターの「お問い合わせ」） -------------------- */
+.button--pill-outline {
+    min-width: 160px;
+    padding: 10px 22px;
+    border: 1px solid var(--color-orange);
+    border-radius: 999px;
+    background-color: var(--color-white);
+    color: var(--color-text);
+    font-size: 15px;
+    font-weight: var(--weight-medium);
+}
+
+/* --- プランカード内の角丸長方形ボタン ---------------------------------- */
+.button--block {
+    width: 100%;
+    max-width: 260px;
+    padding: 10px 16px;
+    border-radius: 3px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-text);
+    box-shadow: var(--shadow-button);
+    color: var(--color-text);
+    font-size: 18px;
+}
+
+/* 「おすすめ」プラン側は塗りのオレンジ＋黄色い影 */
+.button--block-accent {
+    border-color: var(--color-orange);
+    background-color: var(--color-orange);
+    box-shadow: var(--shadow-button-accent);
+    color: var(--color-white);
+}
+
+/* --- クロージングCTAの大きいボタン（カンプ実測） ------------------------- */
+.button--hero {
+    gap: 30px;
+    min-width: 490px;
+    padding: 30px 40px;
+    border-radius: 30px;
+    background-color: #fd793a;
+    /* 下辺の濃いオレンジに加えて、カンプ同様の柔らかい影を重ねる（値は em なのでSPでも比例） */
+    box-shadow: 0 5px 2px #ac3800, 0.07em 0.09em 0.05em rgba(0, 0, 0, 0.28);
+    color: var(--color-white);
+    font-size: 40px;
+    letter-spacing: 0.04em;
+}
+
+.button--hero .button__icon {
+    width: 58px;
+    height: 58px;
+    stroke-width: 1.4;
+}
+
+@media (max-width: 767px) {
+    .button--pill {
+        min-width: 0;
+        padding: 10px 18px;
+        font-size: 13px;
+    }
+
+    /* カンプ実測 257×59。PCの約半分 */
+    /* 402pxのカンプ実測(257×59)を上限に、狭い端末では画面幅に追従させる */
+    .button--hero {
+        gap: min(15px, 3.73vw);
+        min-width: 0;
+        padding: min(15px, 3.73vw) min(20px, 4.98vw);
+        border-radius: min(15px, 3.73vw);
+        box-shadow: 0 3px 1px #ac3800, 0.07em 0.09em 0.05em rgba(0, 0, 0, 0.28);
+        font-size: min(20px, 4.98vw);
+    }
+
+    .button--hero .button__icon {
+        width: min(29px, 7.21vw);
+        height: min(29px, 7.21vw);
+    }
+
+    .button--block {
+        font-size: 15px;
+    }
+}

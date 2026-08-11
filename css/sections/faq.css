@@ -1,0 +1,183 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   よくある質問
+   <details>/<summary> で組み、開閉のアニメーションだけをJSで補う。
+   ========================================================================== */
+
+.faq {
+    --notch-color: var(--color-yellow);
+    --notch-top-color: var(--color-bg);
+
+    position: relative;
+    padding: 160px 0 195px;
+    background-color: var(--color-yellow);
+}
+
+/* Q&Aのあしらいを背景に敷く */
+.faq__back {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    /* セクションを overflow:hidden で切ると下辺の▼まで消えてしまうので、
+       あしらい側に同じ角丸を持たせてはみ出しを防ぐ */
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    object-fit: cover;
+    object-position: 60% 52%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* コンテンツがあしらいSVGより前面に来るよう */
+.faq > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.faq__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 46px;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.1em;
+}
+
+/* カンプ同様、見出しよりわずかに上へずらして添える */
+.faq__title-icon {
+    position: relative;
+    top: -16px;
+    width: 111px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 110px;
+}
+
+.faq__item {
+    border: 2px solid var(--color-orange);
+    background-color: var(--color-white);
+}
+
+.faq__question {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 33px 30px;
+    font-size: 22px;
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    list-style: none;
+}
+
+/* Safari の三角マーカーを消す */
+.faq__question::-webkit-details-marker {
+    display: none;
+}
+
+.faq__mark {
+    flex-shrink: 0;
+    font-family: var(--font-number);
+    font-size: 24px;
+    font-weight: var(--weight-bold);
+}
+
+.faq__mark--q {
+    color: var(--color-orange);
+}
+
+.faq__mark--a {
+    color: var(--color-teal);
+}
+
+/* 開閉インジケーターの山形 */
+.faq__chevron {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    margin-left: auto;
+    fill: none;
+    stroke: var(--color-text);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform var(--transition);
+}
+
+.faq__item[open] .faq__chevron {
+    transform: rotate(180deg);
+}
+
+.faq__answer {
+    display: flex;
+    gap: 16px;
+    padding: 0 30px 24px;
+    font-size: 20px;
+    line-height: 2;
+}
+
+@media (max-width: 767px) {
+    .faq {
+        padding: 56px 0 72px;
+    }
+
+    /* このセクションだけリード文を小さくする */
+    .faq .section-lead {
+        font-size: 12px;
+    }
+
+    /* SPはあしらいを横幅いっぱいに表示、top/leftで位置調整 */
+    .faq__back {
+        width: 100%;
+        height: 60%;
+        top: 16.8%;
+        left: 0;
+        transform: translateY(-50%);
+        object-fit: unset;
+    }
+
+    .faq__title {
+        gap: 8px;
+        font-size: 26px;
+    }
+
+    .faq__title-icon {
+        top: -8px;
+        width: 64px;
+    }
+
+    .faq__list {
+        gap: 16px;
+        margin-top: 36px;
+    }
+
+    .faq__question {
+        gap: 10px;
+        padding: 16px 18px;
+        font-size: 15px;
+    }
+
+    .faq__mark {
+        font-size: 18px;
+    }
+
+    .faq__chevron {
+        width: 20px;
+        height: 20px;
+    }
+
+    .faq__answer {
+        gap: 10px;
+        padding: 0 18px 20px;
+        font-size: 14px;
+    }
+}

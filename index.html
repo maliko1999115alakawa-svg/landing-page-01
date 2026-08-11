@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <!-- 限定公開のため検索エンジンには載せない -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>キャリアトレーナーズ｜国家資格キャリアコンサルタント 実技試験対策</title>
+    <meta name="description" content="国家資格キャリアコンサルタントの実技試験対策を、オンラインで1対1。50分の本番形式の練習と録画の振り返りで、合格に近づきます。">
+
+    <!-- 和文は Zen Kaku Gothic New、数字は Inter（デザインの Google Sans Flex の代替） -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- 簡易パスワードゲート（本体より先に読み込む） -->
+    <link rel="stylesheet" href="css/components/gate.css?v=1">
+    <script src="js/gate.js?v=1"></script>
+
+    <!-- CSS は「土台 → レイアウト → 部品 → セクション」の順に読み込む -->
+    <link rel="stylesheet" href="css/base/reset.css?v=2">
+    <link rel="stylesheet" href="css/base/variables.css?v=2">
+    <link rel="stylesheet" href="css/base/base.css?v=2">
+    <link rel="stylesheet" href="css/layout/container.css?v=2">
+    <link rel="stylesheet" href="css/layout/header.css?v=2">
+    <link rel="stylesheet" href="css/layout/footer.css?v=2">
+    <link rel="stylesheet" href="css/components/button.css?v=2">
+    <link rel="stylesheet" href="css/components/section-title.css?v=2">
+    <link rel="stylesheet" href="css/sections/hero.css?v=2">
+    <link rel="stylesheet" href="css/sections/worry.css?v=2">
+    <link rel="stylesheet" href="css/sections/solve.css?v=2">
+    <link rel="stylesheet" href="css/sections/support.css?v=2">
+    <link rel="stylesheet" href="css/sections/flow.css?v=2">
+    <link rel="stylesheet" href="css/sections/plan.css?v=2">
+    <link rel="stylesheet" href="css/sections/trainer.css?v=2">
+    <link rel="stylesheet" href="css/sections/faq.css?v=2">
+    <link rel="stylesheet" href="css/sections/schedule.css?v=2">
+    <link rel="stylesheet" href="css/sections/cta.css?v=2">
+    <link rel="stylesheet" href="css/sections/recruit.css">
+</head>
+
+<body>
+    <!-- ======================================================================
+         ヘッダー
+         ====================================================================== -->
+    <header class="header">
+        <div class="header__inner">
+            <a class="header__logo" href="#">キャリアトレーナーズ</a>
+
+            <nav class="header__nav" id="global-nav" aria-label="メインナビゲーション">
+                <ul class="header__list">
+                    <li><a class="header__link" href="#flow">ご利用の流れ</a></li>
+                    <li><a class="header__link" href="#plan">料金</a></li>
+                    <li><a class="header__link" href="#faq">Q&amp;A</a></li>
+                    <li><a class="header__link" href="#recruit">お問い合わせ</a></li>
+                </ul>
+                <a class="button button--pill header__cta" href="#cta">
+                    <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
+                        <path d="M3 21v-1a6 6 0 0 1 6-6h2" />
+                        <path d="M18 14v6M15 17h6" />
+                    </svg>
+                    登録してはじめる
+                </a>
+            </nav>
+
+            <button class="header__toggle" type="button" aria-controls="global-nav" aria-expanded="false">
+                <span class="header__toggle-bar"></span>
+                <span class="header__toggle-bar"></span>
+                <span class="header__toggle-bar"></span>
+                <span class="visually-hidden">メニューを開く</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==================================================================
+             ヒーロー
+             ================================================================== -->
+        <section class="hero">
+            <img class="hero__photo" src="images/hero/hero.jpg" alt="オンラインで実技試験の練習をするキャリアコンサルタントと受講者" width="1920" height="1280">
+            <div class="hero__shape" aria-hidden="true"></div>
+
+            <!-- SPのみ。黄色い図形を下げても人物が隠れないよう、
+                 hero.jpg から人物だけを切り抜いた画像を図形の上に重ねる -->
+            <img class="hero__woman" src="images/hero/hero_woman.webp" alt="" aria-hidden="true" width="1326" height="859">
+
+            <div class="hero__inner">
+                <!-- 文字とブレースが一体の素材。文言は alt で読み上げ・検索に残す -->
+                <img class="hero__brace" src="images/hero/hero-brace.svg" alt="国家資格キャリアコンサルタント 実技試験対策" width="385" height="150">
+
+                <h1 class="hero__title">
+                    <span class="hero__title-line">練習を<span class="hero__title-strong">重ねる</span>ほど、</span>
+                    <span class="hero__title-line"><span class="hero__title-strong hero__title-accent">合格</span>が見えてくる。</span>
+                </h1>
+                <img class="hero__sparkle" src="images/hero/キラキラ.svg" alt="" width="125" height="148" aria-hidden="true">
+
+                <ul class="hero__badges">
+                    <li class="hero__badge">
+                        <p class="hero__badge-label">いつでもどこでも</p>
+                        <p class="hero__badge-value">オンライン<span class="hero__badge-unit">で</span></p>
+                    </li>
+                    <li class="hero__badge">
+                        <p class="hero__badge-label">録画を見返して</p>
+                        <p class="hero__badge-value">何度も復習</p>
+                    </li>
+                    <li class="hero__badge hero__badge--price">
+                        <p class="hero__badge-label">3回プランなら</p>
+                        <p class="hero__badge-value"><span class="num">¥3,333</span><span class="hero__badge-unit">/1回</span></p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             こんなお悩み、ございませんか？
+             ================================================================== -->
+        <section class="worry">
+            <div class="container">
+                <h2 class="worry__title">
+                    <span class="worry__title-highlight">
+                        こんなお悩み、
+                        <img class="worry__title-deco" src="images/common/title-wave_worry.svg" alt="" aria-hidden="true">
+                    </span>
+                    <br class="u-sp-only">ございませんか？
+                </h2>
+
+                <!-- PCは「大きなブロブ＋中央に2人」、SPは「女性のかたまり／男性のかたまり」の
+                     上下2段。どちらの組み方にもできるよう、人物ごとにグループでくくっている -->
+                <div class="worry__body">
+                    <div class="worry__blob" aria-hidden="true"></div>
+
+                    <div class="worry__group worry__group--woman">
+                        <img class="worry__figure" src="images/worry/worry-woman.svg" alt="練習相手がいないことに悩む女性のイラスト" width="130" height="439">
+                        <p class="worry__item worry__item--left">
+                            <span class="worry__line">ロールプレイって一人じゃ</span><br>
+                            <span class="worry__line">練習のしようがない…</span>
+                        </p>
+                        <p class="worry__item worry__item--left">
+                            <span class="worry__line">勉強会に行きたいけど、</span><br>
+                            <span class="worry__line">遠いし、日程も合わなくて</span>
+                        </p>
+                    </div>
+
+                    <div class="worry__group worry__group--man">
+                        <img class="worry__figure" src="images/worry/worry-man.svg" alt="本番に不安を感じる男性のイラスト" width="136" height="454">
+                        <p class="worry__item worry__item--right">
+                            <span class="worry__line">自分の傾聴、これであってる？</span><br>
+                            <span class="worry__line">誰かに見てほしい</span>
+                        </p>
+                        <p class="worry__item worry__item--right">
+                            <span class="worry__line">本番でちゃんと話せるか、</span><br>
+                            <span class="worry__line">正直怖い</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             お悩み解決の帯
+             ================================================================== -->
+        <section class="solve has-notch is-rounded-top">
+            <img class="solve__bulb" src="images/common/solve-bulb.svg" alt="" width="34" height="49" aria-hidden="true">
+            <span class="solve__rivet solve__rivet--left" aria-hidden="true"></span>
+            <span class="solve__rivet solve__rivet--right" aria-hidden="true"></span>
+            <p class="solve__text">そのお悩み、<br class="u-sp-only"><span class="solve__brand">キャリアトレーナーズ</span>が解決します！</p>
+        </section>
+
+        <!-- ==================================================================
+             実技試験対策（3つの強み）
+             ================================================================== -->
+        <section class="support has-notch has-notch-top is-rounded-top" id="support">
+            <div class="container">
+                <div class="support__heading">
+                    <!-- 文字とあしらいが一体の素材。文言は alt で読み上げ・検索に残す -->
+                    <img class="support__eyebrow" src="images/support/support-eyebrow.svg" alt="気軽に" width="175" height="118">
+                    <h2 class="support__title">実技試験対策</h2>
+                    <p class="support__lead"><span class="support__lead-line">「合格」を確信に変える、</span><span class="support__lead-line">実践型オンライントレーニングを提供します</span></p>
+                </div>
+
+                <ul class="support__cards">
+                    <li class="support__card">
+                        <img class="support__card-image" src="images/support/support-01.jpg" alt="自宅のリビングでノートパソコンに向かう女性" width="749" height="500" loading="lazy">
+                        <div class="support__card-body">
+                            <h3 class="support__card-title">自宅・空き時間で</h3>
+                            <p class="support__card-text">いつでも・どこでも、自分のライフスタイルに合わせて効率よく受講できます。</p>
+                        </div>
+                    </li>
+                    <li class="support__card">
+                        <img class="support__card-image" src="images/support/support-02.jpg" alt="資料を手に説明するキャリアコンサルタント" width="750" height="500" loading="lazy">
+                        <div class="support__card-body">
+                            <h3 class="support__card-title">1対1で実技練習</h3>
+                            <p class="support__card-text">経験豊富な国家資格キャリアコンサルタントが、本番形式でより実践的な練習を行います。</p>
+                        </div>
+                    </li>
+                    <li class="support__card">
+                        <img class="support__card-image" src="images/support/support-03.jpg" alt="タブレットで録画を見返す男性" width="750" height="500" loading="lazy">
+                        <div class="support__card-body">
+                            <h3 class="support__card-title">録画で振り返り</h3>
+                            <p class="support__card-text">録画と講師からのフィードバックで練習を振り返り。次へ繋げるには復習が大切です。</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="support__banner-wrap">
+                    <div class="support__banner">
+                        <p class="support__banner-text"><span class="support__lead-line">キャリアコンサルティング協議会、</span><span class="support__lead-line">JCDA の両団体の実技試験に対応しています</span></p>
+                    </div>
+                    <img class="support__banner-illust" src="images/support/support-people.svg" alt="" width="253" height="292" aria-hidden="true" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             ご利用の流れ
+             ================================================================== -->
+        <section class="flow" id="flow">
+            <div class="container">
+                <h2 class="section-title section-title--marker">
+                    ご利用の流れ
+                    <img class="section-title__deco" src="images/common/title-marker.svg" alt="" aria-hidden="true">
+                </h2>
+
+                <!-- 矢印・人物・楕円は Figma のパスをそのままSVGに、文字はHTMLで重ねる -->
+                <div class="flow__figure">
+                    <div class="flow__diagram">
+                        <p class="flow__tag">
+                            まずはご登録
+                            <span class="flow__tag-note">初めての方はご登録から</span>
+                        </p>
+
+                        <div class="flow__art-wrap">
+                            <p class="flow__lead"><span class="flow__lead-line">繰り返しの練習で、</span><span class="flow__lead-line">合格へグッと近づく。</span></p>
+
+                            <!-- ラベルはSVG内の楕円の中心に重ねる。基準はこの枠 -->
+                            <div class="flow__art-frame">
+                                <!-- SPは配置を組み替えた専用の図に差し替える -->
+                                <picture>
+                                    <source media="(max-width: 767px)" srcset="images/flow/flow-sp.svg" width="402" height="471">
+                                    <img class="flow__art" src="images/flow/flow-art.svg" alt="" width="1000" height="645" aria-hidden="true" loading="lazy">
+                                </picture>
+
+                                <ol class="flow__steps">
+                                    <li class="flow__step flow__step--1">
+                                        <span class="flow__step-head"><span class="num flow__step-num">1</span>予約</span>
+                                        <span class="flow__step-note">日時を選ぶ</span>
+                                    </li>
+                                    <li class="flow__step flow__step--2">
+                                        <span class="flow__step-head"><span class="num flow__step-num">2</span>講師とマッチ</span>
+                                        <span class="flow__step-note">URLが届く</span>
+                                    </li>
+                                    <li class="flow__step flow__step--3">
+                                        <span class="flow__step-head"><span class="num flow__step-num">3</span>練習</span>
+                                        <span class="flow__step-note">50分・本番形式</span>
+                                    </li>
+                                    <li class="flow__step flow__step--4">
+                                        <span class="flow__step-head"><span class="num flow__step-num">4</span>振り返り</span>
+                                        <span class="flow__step-note">フィードバックと<br>録画で振り返り</span>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             プラン・料金
+             ================================================================== -->
+        <section class="plan has-notch has-notch-top is-rounded-top" id="plan">
+            <div class="container">
+                <h2 class="section-title section-title--wave">
+                    プラン・料金
+                    <img class="section-title__deco" src="images/common/title-wave.svg" alt="" aria-hidden="true">
+                </h2>
+
+                <div class="plan__cards">
+                    <article class="plan__card">
+                        <img class="plan__deco plan__deco--left" src="images/plan/plan-deco-left.svg" alt="" width="191" height="272" aria-hidden="true" loading="lazy">
+                        <h3 class="plan__name">単発プラン</h3>
+                        <p class="plan__price">
+                            <span class="num plan__price-amount">5,000</span><span class="plan__price-unit">円</span><span class="plan__price-times">/1回</span>
+                        </p>
+                        <ul class="plan__list">
+                            <li>オンライン実技演習50分（1回）</li>
+                            <li>講師との相互フィードバック</li>
+                            <li>録画で振り返り</li>
+                        </ul>
+                        <p class="plan__action">
+                            <a class="button button--block" href="#cta">登録してはじめる</a>
+                        </p>
+                    </article>
+
+                    <article class="plan__card plan__card--recommended">
+                        <img class="plan__badge" src="images/common/おすすめマーク.svg" alt="おすすめ" width="127" height="127">
+                        <h3 class="plan__name">3回プラン</h3>
+                        <p class="plan__price">
+                            <span class="num plan__price-amount">10,000</span><span class="plan__price-unit">円</span><span class="plan__price-times">/3回</span>
+                        </p>
+                        <ul class="plan__list">
+                            <li>オンライン実技演習50分×3回</li>
+                            <li>講師との相互フィードバック</li>
+                            <li>録画で振り返り</li>
+                            <li>練習を重ねて着実に合格へ</li>
+                        </ul>
+                        <p class="plan__action">
+                            <a class="button button--block button--block-accent" href="#cta">登録してはじめる</a>
+                        </p>
+                        <img class="plan__deco plan__deco--steps" src="images/plan/plan-deco-steps.svg" alt="" width="277" height="146" aria-hidden="true" loading="lazy">
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             講師紹介
+             ================================================================== -->
+        <section class="trainer" id="trainer">
+            <div class="container">
+                <h2 class="section-title section-title--marker">
+                    講師紹介
+                    <img class="section-title__deco" src="images/common/title-marker.svg" alt="" aria-hidden="true">
+                </h2>
+                <p class="section-lead">本番を知る講師が、あなたの練習相手です</p>
+
+                <div class="trainer__carousel" data-carousel data-carousel-sp-start="1">
+                    <button class="trainer__arrow trainer__arrow--prev" type="button" data-carousel-prev>
+                        <span class="visually-hidden">前の講師を見る</span>
+                    </button>
+
+                    <div class="trainer__viewport">
+                        <ul class="trainer__list" data-carousel-track>
+                            <li class="trainer__item">
+                                <article class="trainer__card">
+                                    <img class="trainer__photo" src="images/trainer/trainer-01.jpg" alt="講師Aの顔写真" width="440" height="440" loading="lazy">
+                                    <h3 class="trainer__name">講師A</h3>
+                                    <p class="trainer__comment">「講師コメント講師コメント講師コメント講師コメント講師コメント講師コメ」</p>
+                                </article>
+                            </li>
+                            <li class="trainer__item">
+                                <article class="trainer__card">
+                                    <img class="trainer__photo" src="images/trainer/trainer-02.jpg" alt="佐藤 奈緒子講師の顔写真" width="341" height="341" loading="lazy">
+                                    <h3 class="trainer__name">佐藤　奈緒子</h3>
+                                    <p class="trainer__comment">「講師コメント講師コメント講師コメント講師コメント講師コメント講師コメ」</p>
+                                </article>
+                            </li>
+                            <li class="trainer__item">
+                                <article class="trainer__card">
+                                    <img class="trainer__photo" src="images/trainer/trainer-03.jpg" alt="講師Bの顔写真" width="320" height="320" loading="lazy">
+                                    <h3 class="trainer__name">講師B</h3>
+                                    <p class="trainer__comment">「講師コメント講師コメント講師コメント講師コメント講師コメント講師コメ」</p>
+                                </article>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button class="trainer__arrow trainer__arrow--next" type="button" data-carousel-next>
+                        <span class="visually-hidden">次の講師を見る</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             よくある質問
+             ================================================================== -->
+        <section class="faq has-notch has-notch-top is-rounded-top" id="faq">
+            <img class="faq__back" src="images/common/Q&amp;A_back.svg" alt="" aria-hidden="true" loading="lazy">
+            <div class="container container--narrow">
+                <h2 class="faq__title">
+                    よくある質問
+                    <img class="faq__title-icon" src="images/common/faq-icon.svg" alt="" width="111" height="90" aria-hidden="true">
+                </h2>
+                <p class="section-lead">はじめての方が気になりやすい点をまとめました</p>
+
+                <div class="faq__list">
+                    <details class="faq__item" open>
+                        <summary class="faq__question">
+                            <span class="faq__mark faq__mark--q" aria-hidden="true">Q</span>
+                            スマホやタブレットでも参加できますか？
+                            <svg class="faq__chevron" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </summary>
+                        <div class="faq__answer">
+                            <span class="faq__mark faq__mark--a" aria-hidden="true">A</span>
+                            <p>実技試験では相談者を尊重する態度などを含めた所作も問われるポイントのひとつです。スマホではなくPCやタブレットなどのモニターの大きいデバイスをお使いください。</p>
+                        </div>
+                    </details>
+
+                    <details class="faq__item">
+                        <summary class="faq__question">
+                            <span class="faq__mark faq__mark--q" aria-hidden="true">Q</span>
+                            1回だけの利用でも大丈夫ですか？
+                            <svg class="faq__chevron" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </summary>
+                        <div class="faq__answer">
+                            <span class="faq__mark faq__mark--a" aria-hidden="true">A</span>
+                            <p>はい、単発プランをご用意しています。まずは1回試していただき、続けたい場合に3回プランへお切り替えいただけます。</p>
+                        </div>
+                    </details>
+
+                    <details class="faq__item">
+                        <summary class="faq__question">
+                            <span class="faq__mark faq__mark--q" aria-hidden="true">Q</span>
+                            1回の練習はどのくらいの時間ですか？
+                            <svg class="faq__chevron" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </summary>
+                        <div class="faq__answer">
+                            <span class="faq__mark faq__mark--a" aria-hidden="true">A</span>
+                            <p>1回あたり50分です。本番形式のロールプレイに加えて、講師との相互フィードバックの時間を含みます。</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             試験日程
+             ================================================================== -->
+        <section class="schedule" id="schedule">
+            <div class="container">
+                <h2 class="section-title section-title--marker">
+                    試験日程
+                    <img class="section-title__deco" src="images/common/title-marker.svg" alt="" aria-hidden="true">
+                </h2>
+                <p class="section-lead">受ける日が決まれば、あとは練習を重ねるだけ。<br class="u-sp-only">まずは日程の確認から。</p>
+
+                <div class="schedule__cards">
+                    <!-- SPでは直近の1枚だけ開いた状態にし、もう片方は押すと開く。
+                         PCは script.js が常に open を維持するので2枚とも開いたまま -->
+                    <details class="schedule__card" data-schedule-card open>
+                        <summary class="schedule__card-head">
+                            <h3 class="schedule__card-title">
+                                <svg class="schedule__card-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <rect x="3" y="5" width="18" height="16" rx="2" />
+                                    <path d="M3 10h18M8 3v4M16 3v4" />
+                                </svg>
+                                第32回試験日程
+                            </h3>
+                        </summary>
+                        <div class="schedule__card-body">
+                            <div class="schedule__row">
+                                <p class="schedule__exam">学科・論述試験</p>
+                                <div class="schedule__detail">
+                                    <span class="schedule__tag">両団体共通</span>
+                                    <p class="schedule__date"><span class="schedule__date-year"><span class="num">2026</span>年</span> <span class="num">7</span>月<span class="num">5</span>日<span class="schedule__date-day">（日）</span></p>
+                                </div>
+                            </div>
+
+                            <div class="schedule__row">
+                                <p class="schedule__exam">実技面接試験</p>
+                                <div class="schedule__detail">
+                                    <div class="schedule__detail-line">
+                                        <a class="schedule__tag schedule__tag--link" href="https://www.career-kentei.org/" target="_blank" rel="noopener">
+                                            キャリアコンサルティング協議会
+                                            <svg class="schedule__tag-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path d="M14 4h6v6M20 4l-8 8" />
+                                                <path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" />
+                                            </svg>
+                                        </a>
+                                        <p class="schedule__dates"><span class="num">7/10・11・12・18・19・20</span></p>
+                                    </div>
+                                    <div class="schedule__detail-line">
+                                        <a class="schedule__tag schedule__tag--link" href="https://www.jcda-careerex.org/" target="_blank" rel="noopener">
+                                            JCDA
+                                            <svg class="schedule__tag-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path d="M14 4h6v6M20 4l-8 8" />
+                                                <path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" />
+                                            </svg>
+                                        </a>
+                                        <p class="schedule__dates"><span class="num">7/11・12・18・19</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="schedule__card" data-schedule-card>
+                        <summary class="schedule__card-head">
+                            <h3 class="schedule__card-title">
+                                <svg class="schedule__card-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <rect x="3" y="5" width="18" height="16" rx="2" />
+                                    <path d="M3 10h18M8 3v4M16 3v4" />
+                                </svg>
+                                第33回試験日程
+                            </h3>
+                        </summary>
+                        <div class="schedule__card-body">
+                            <div class="schedule__row">
+                                <p class="schedule__exam">学科・論述試験</p>
+                                <div class="schedule__detail">
+                                    <span class="schedule__tag">両団体共通</span>
+                                    <p class="schedule__date"><span class="schedule__date-year"><span class="num">2026</span>年</span> <span class="num">11</span>月<span class="num">1</span>日<span class="schedule__date-day">（日）</span></p>
+                                </div>
+                            </div>
+
+                            <div class="schedule__row">
+                                <p class="schedule__exam">実技面接試験</p>
+                                <div class="schedule__detail">
+                                    <div class="schedule__detail-line">
+                                        <a class="schedule__tag schedule__tag--link" href="https://www.career-kentei.org/" target="_blank" rel="noopener">
+                                            キャリアコンサルティング協議会
+                                            <svg class="schedule__tag-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path d="M14 4h6v6M20 4l-8 8" />
+                                                <path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" />
+                                            </svg>
+                                        </a>
+                                        <p class="schedule__dates"><span class="num">11/7・8・13・14・15・21・22</span></p>
+                                    </div>
+                                    <div class="schedule__detail-line">
+                                        <a class="schedule__tag schedule__tag--link" href="https://www.jcda-careerex.org/" target="_blank" rel="noopener">
+                                            JCDA
+                                            <svg class="schedule__tag-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path d="M14 4h6v6M20 4l-8 8" />
+                                                <path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" />
+                                            </svg>
+                                        </a>
+                                        <p class="schedule__dates"><span class="num">11/7・8・14・15</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <p class="schedule__note">※実技面接は団体により日程・会場が異なります。最新の日程・会場は各団体の公式サイトをご確認ください。</p>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             クロージングCTA
+             ================================================================== -->
+        <section class="cta" id="cta">
+            <!-- 重なり順は「黄色 → イラスト → テキスト」。DOMの並びがそのまま描画順になる -->
+            <div class="cta__bg" aria-hidden="true"></div>
+            <img class="cta__illust" src="images/cta/cta-illust.svg" alt="" width="712" height="485" aria-hidden="true" loading="lazy">
+
+            <div class="cta__inner">
+                <p class="cta__eyebrow">さっそく、はじめましょう</p>
+                <p class="cta__title">練習を重ねるほど、<br><span class="cta__title-accent">合格が見えてくる。</span></p>
+
+                <p class="cta__action">
+                    <a class="button button--hero" href="#recruit">
+                        <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
+                            <path d="M3 21v-1a6 6 0 0 1 6-6h2" />
+                            <path d="M18 14v6M15 17h6" />
+                        </svg>
+                        登録してはじめる
+                    </a>
+                </p>
+
+                <p class="cta__note">
+                    <svg class="cta__note-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M9.5 9a2.5 2.5 0 1 1 3.2 2.4c-.5.2-.7.6-.7 1.1v.5M12 16.5v.5" />
+                    </svg>
+                    ご不明な点は <a class="cta__note-link" href="#recruit">お問い合わせフォーム</a> から
+                </p>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             リクルート
+             ================================================================== -->
+        <section class="recruit" id="recruit">
+            <div class="recruit__inner">
+                <p class="recruit__badge">お知らせ</p>
+
+                <div class="recruit__body">
+                    <h2 class="recruit__title">キャリアコンサルタントの方へ</h2>
+                    <p class="recruit__text">
+                        国家資格キャリアコンサルタント所持者の皆様。<br>
+                        私たちキャリアトレーナーズは講師として一緒にご活躍いただける方を募集しています。
+                    </p>
+                </div>
+
+                <p class="recruit__action">
+                    <a class="button button--pill-outline" href="mailto:info@example.com">
+                        <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="3" y="5" width="18" height="14" rx="2" />
+                            <path d="m3 7 9 6 9-6" />
+                        </svg>
+                        お問い合わせ
+                    </a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================================================
+         フッター
+         ====================================================================== -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__brand">
+                <p class="footer__logo">キャリアトレーナーズ</p>
+                <p class="footer__description">
+                    国家資格キャリアコンサルタント実技試験の<br>
+                    オンライン練習プラットフォーム
+                </p>
+                <ul class="footer__social">
+                    <li>
+                        <a class="footer__social-link" href="https://www.instagram.com/" target="_blank" rel="noopener">
+                            <svg class="footer__social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <path d="M17.5 6.5h.01" />
+                            </svg>
+                            <span class="visually-hidden">Instagram</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="footer__social-link" href="https://x.com/" target="_blank" rel="noopener">
+                            <svg class="footer__social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                <rect x="3" y="3" width="18" height="18" rx="3" />
+                                <path d="m8 8 8 8M16 8l-8 8" />
+                            </svg>
+                            <span class="visually-hidden">X</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer__actions">
+                <a class="button button--pill" href="#cta">
+                    <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
+                        <path d="M3 21v-1a6 6 0 0 1 6-6h2" />
+                        <path d="M18 14v6M15 17h6" />
+                    </svg>
+                    登録してはじめる
+                </a>
+                <a class="button button--pill-outline" href="mailto:info@example.com">
+                    <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3" y="5" width="18" height="14" rx="2" />
+                        <path d="m3 7 9 6 9-6" />
+                    </svg>
+                    お問い合わせ
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

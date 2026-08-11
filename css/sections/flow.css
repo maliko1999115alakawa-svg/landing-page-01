@@ -1,0 +1,355 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   ご利用の流れ
+   矢印・人物・楕円は Figma のパスをそのまま書き出したSVG(flow-art.svg)。
+   文字はHTMLで重ねているので、拡大しても潰れず読み上げ・検索にも残る。
+
+   ラベルの位置は SVG(1000×644.6) 内の楕円の中心を実測して割合で指定し、
+   translate(-50%, -50%) で中心合わせしている。
+   文字サイズは cqw（SVGの表示幅に対する割合）なので、図と一緒に拡大縮小する。
+   ========================================================================== */
+
+.flow {
+    padding: 150px 0 170px;
+    background-color
+    : var(--color-bg);
+}
+
+.flow__figure {
+    margin-top: 90px;
+}
+
+/* 枠。上辺のオレンジ帯は疑似要素で作る */
+.flow__diagram {
+    position: relative;
+    max-width: 1160px;
+    margin-inline: auto;
+    padding-top: 60px;
+    border: 4px solid var(--color-orange-deep);
+    background-color: var(--color-white);
+}
+
+.flow__diagram::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 60px;
+    background-color: var(--color-orange-deep);
+}
+
+/* --- 図版とラベルの重ね合わせ ------------------------------------------- */
+/* 縦のマージンも枠幅に対する割合になるので、幅が変われば一緒に縮む。
+   リード文の配置基準と、文字サイズの基準(cqw)を兼ねる */
+.flow__art-wrap {
+    position: relative;
+    container-type: inline-size;
+    width: 86%;
+    margin: 14.2% auto 2.4%;
+}
+
+/* ラベルの位置基準。文字サイズもこの幅(cqw)を基準に決める */
+.flow__art-frame {
+    position: relative;
+    container-type: inline-size;
+}
+
+.flow__art {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* --- 「まずはご登録」のタグ --------------------------------------------- */
+.flow__tag {
+    position: absolute;
+    top: 3.8%;
+    left: 38.1%;
+    z-index: 1;
+    width: 24.1%;
+    padding: 14px 10px 18px;
+    border-radius: 4px;
+    background-color: var(--color-orange-deep);
+    color: var(--color-white);
+    font-size: 25px;
+    font-weight: var(--weight-bold);
+    line-height: 1.3;
+    letter-spacing: 0.06em;
+    text-align: center;
+}
+
+/* 下向きの尻尾 */
+.flow__tag::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 52%;
+    width: 0;
+    height: 0;
+    border-top: 40px solid var(--color-orange-deep);
+    border-right: 23px solid transparent;
+    border-left: 23px solid transparent;
+    transform: translateX(-50%);
+}
+
+.flow__tag-note {
+    display: block;
+    margin-top: 4px;
+    font-size: 16px;
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.02em;
+}
+
+/* --- 4つのステップ（SVG内の楕円の中心に重ねる） ------------------------ */
+.flow__step {
+    position: absolute;
+    width: 26%;
+    line-height: 1.4;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+.flow__step-head {
+    display: block;
+    font-size: 25px;
+    font-size: 2.1cqw;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.flow__step-num {
+    margin-right: 0.24em;
+    font-size: 1.6em;
+}
+
+.flow__step-note {
+    display: block;
+    margin-top: 0.3em;
+    font-size: 20px;
+    font-size: 1.7cqw;
+    letter-spacing: 0.02em;
+}
+
+.flow__step--1 {
+    top: 16%;
+    left: 51%;
+}
+
+.flow__step--2 {
+    top: 48.17%;
+    left: 86.4%;
+}
+
+.flow__step--3 {
+    top: 77%;
+    left: 50.8%;
+}
+
+.flow__step--4 {
+    top: 49.3%;
+    left: 15.75%;
+}
+
+/* --- 中央のリード -------------------------------------------------------- */
+/* かたまりごとに折り返させる。PCは2行、SPは1行に収まる */
+.flow__lead-line {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.flow__lead {
+    position: absolute;
+    top: 48%;
+    left: 52.5%;
+    width: 32%;
+    font-size: 3.3cqw;
+    font-weight: var(--weight-medium);
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+/* --------------------------------------------------------------------------
+   タブレット・スマートフォン
+   SPカンプでは図をそのまま縮小し、中央のリードを図の上へ出している
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+    .flow__diagram {
+        padding-top: 34px;
+        border-width: 3px;
+    }
+
+    .flow__diagram::before {
+        height: 34px;
+    }
+
+    .flow__art-wrap {
+        display: flex;
+        flex-direction: column;
+        width: 92%;
+        margin: 17% auto 6%;
+    }
+
+    .flow__art-frame {
+        width: 100%;
+    }
+
+    /* リードは図に重ねず、上に置く */
+    .flow__lead {
+        position: static;
+        order: -1;
+        width: auto;
+        margin-bottom: 5%;
+        font-size: 15px;
+        font-size: 3cqw;
+        line-height: 1.5;
+        transform: none;
+    }
+
+    .flow__step-head {
+        font-size: 3.6cqw;
+    }
+
+    .flow__step-note {
+        font-size: 2.9cqw;
+    }
+
+    .flow__tag {
+        top: 2.6%;
+        width: 42%;
+        left: 29%;
+        padding: 8px 8px 10px;
+        font-size: 16px;
+    }
+
+    .flow__tag::after {
+        border-top-width: 22px;
+        border-right-width: 13px;
+        border-left-width: 13px;
+    }
+
+    .flow__tag-note {
+        margin-top: 2px;
+        font-size: 11px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   スマートフォン（カンプ iPhone17-1 / 402px 基準）
+
+   SPカンプは図の配置が別物なので、専用の flow-sp.svg に差し替える。
+   この素材はカンプと原寸(402px幅)で一致しているため、枠を画面いっぱいまで
+   広げて等倍で敷き、ラベルは素材内の楕円の中心に％で重ねている。
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+    .flow {
+        padding: 60px 0 80px;
+    }
+
+    .flow__figure {
+        margin-top: 60px;
+    }
+
+    /* カンプ実測 カード幅378px。コンテナ(354px)からはみ出させる */
+    .flow__diagram {
+        margin-inline: -12px;
+        padding-top: 20px;
+        border-width: 3px;
+    }
+
+    .flow__diagram::before {
+        height: 20px;
+    }
+
+    /* 帯からぶら下がる形なので、上側の角丸は付けない */
+    .flow__tag {
+        top: 20px;
+        left: 19%;
+        width: 62%;
+        padding: 9px 8px 13px;
+        border-radius: 0 0 4px 4px;
+        font-size: 14px;
+    }
+
+    .flow__tag::after {
+        left: 50%;
+        border-top-width: 15px;
+        border-right-width: 9px;
+        border-left-width: 9px;
+    }
+
+    .flow__tag-note {
+        margin-top: 3px;
+        font-size: 11px;
+        white-space: nowrap;
+    }
+
+    /* 素材を402pxの原寸で置くため、枠の内側から少しはみ出させる */
+    .flow__art-wrap {
+        display: flex;
+        flex-direction: column;
+        width: 108%;
+        margin: 23.4% -4% 21.7%;
+    }
+
+    .flow__art-frame {
+        width: 100%;
+        /* 素材の下端に余白があるので、絵の入っている範囲だけ見せる */
+        aspect-ratio: 402 / 341;
+        overflow: hidden;
+    }
+
+    .flow__art-frame picture {
+        display: block;
+    }
+
+    /* リードは図に重ねず、上に置く */
+    .flow__lead {
+        position: static;
+        order: -1;
+        width: auto;
+        margin-top: 16px;
+        margin-bottom: 11.1%;
+        font-size: 3.98cqw;
+        line-height: 1.5;
+        transform: none;
+    }
+
+    .flow__step {
+        width: 40%;
+        line-height: 1.15;
+    }
+
+    .flow__step-head {
+        font-size: 3.98cqw;
+    }
+
+    .flow__step-note {
+        font-size: 2.74cqw;
+    }
+
+    /* 素材内の楕円の中心（402×341 に対する割合） */
+    .flow__step--1 {
+        top: 15.54%;
+        left: 50.87%;
+    }
+
+    .flow__step--2 {
+        top: 53%;
+        left: 75%;
+    }
+
+    .flow__step--3 {
+        top: 83.87%;
+        left: 50.37%;
+    }
+
+    .flow__step--4 {
+        top: 51.61%;
+        left: 25%;
+    }
+}
