@@ -82,7 +82,8 @@
 
 @media (max-width: 767px) {
     .recruit {
-        padding: 88px 0 48px;
+        /* CTAのイラストが黄色帯の下へはみ出す分、間隔が詰まって見えるため広げる */
+        padding: 160px 0 48px;
     }
 
     .recruit__inner {

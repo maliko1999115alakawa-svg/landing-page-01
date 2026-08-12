@@ -179,9 +179,9 @@
         padding: 65px 0 76px;
     }
 
-    /* このセクションだけリード文を小さくする */
+    /* <br>で2行に割っている。1行目22文字が折り返さない範囲で拡大 */
     .schedule .section-lead {
-        font-size: 10px;
+        font-size: min(15px, 3.5vw);
     }
 
     .schedule__cards {

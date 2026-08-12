@@ -23,12 +23,15 @@
 }
 
 /* 「気軽に」＋斜線が一体のSVG。見出しテキストの左上あたりに重なるよう配置 */
+/* 見出しは中央揃えなので、その文字の左端は画面幅によって動く。
+   left を % で置くと幅ごとに見出しとの距離が変わってしまうため、
+   中央から「見出しの文字幅の半分(146px) ＋ 一定の間隔」を引いて位置を決める。
+   これで 768px〜1440px のどの幅でも見出しとの位置関係が変わらない */
 .support__eyebrow {
     position: absolute;
     top: -59px;
-    left: 30%;
-    width: 12%;
-    max-width: 176px;
+    left: calc(50% - 232px);
+    width: 139px;
     height: auto;
 }
 
@@ -195,9 +198,10 @@
     }
 
     /* SPは見出しテキストの左上に合わせる */
+    /* SPも同じ考え方。見出しは28pxで文字幅は約174pxなので、その半分の87pxを使う */
     .support__eyebrow {
         top: -20px;
-        left: 9%;
+        left: calc(50% - 127px);
         width: 46px;
         max-width: none;
     }
@@ -210,7 +214,7 @@
 
     .support__lead {
         margin-top: 14px;
-        font-size: 12px;
+        font-size: min(16px, 3.85vw);
         line-height: 1.55;
     }
 

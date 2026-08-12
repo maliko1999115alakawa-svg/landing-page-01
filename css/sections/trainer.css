@@ -146,8 +146,10 @@
     }
 
     /* このセクションだけリード文を小さくする */
+    /* 見出し(26px)を超えない範囲で拡大。1行に収める必要があるので、
+       最小幅320pxでも折り返さない vw を上限と組み合わせている（19文字） */
     .trainer .section-lead {
-        font-size: 12px;
+        font-size: min(17px, 4vw);
     }
 
     .trainer__carousel {
